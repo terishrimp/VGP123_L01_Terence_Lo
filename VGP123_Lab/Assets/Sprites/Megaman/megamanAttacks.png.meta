@@ -1,0 +1,912 @@
+fileFormatVersion: 2
+guid: 9f764a18a8f06aa4db5c496b917c34df
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5381721882315251484
+    second: busterShot1
+  - first:
+      213: 3101269275379028966
+    second: busterShotImpact1
+  - first:
+      213: -932803728799903477
+    second: busterShotImpact2
+  - first:
+      213: 8625518640711389593
+    second: busterShotImpact3
+  - first:
+      213: -8404851587497613628
+    second: lvl1ChargeShotRelease1
+  - first:
+      213: 6965601727527260196
+    second: lvl1ChargeShotRelease2
+  - first:
+      213: 5713778892725140580
+    second: lvl1ChargeShot1
+  - first:
+      213: 7796341200976052326
+    second: lvl1ChargeShot2
+  - first:
+      213: 4166161250080542279
+    second: lvl1ChargeShot3
+  - first:
+      213: 3123053333215858806
+    second: lvl1ChargeShot4
+  - first:
+      213: -1234258088563854555
+    second: lvl1ChargeShot5
+  - first:
+      213: -6937760022643975272
+    second: lvl1ChargeShot6
+  - first:
+      213: 2585327086317632764
+    second: lvl1ChargeShotImpact1
+  - first:
+      213: 4942165761285096259
+    second: lvl1ChargeShotImpact2
+  - first:
+      213: -7091302200807147874
+    second: lvl1ChargeShotImpact3
+  - first:
+      213: 6654281732916071515
+    second: lvl1ChargeShotImpact4
+  - first:
+      213: 2088191458720886066
+    second: lvl1ChargeShotImpact5
+  - first:
+      213: 2474643854804279085
+    second: lvl1ChargeShotImpact6
+  - first:
+      213: -6169770061114324405
+    second: lvl1ChargeShotImpact7
+  - first:
+      213: -7798376016456832636
+    second: lvl2ChargeShotRelease1
+  - first:
+      213: 1395070911754860068
+    second: lvl2ChargeShotRelease2
+  - first:
+      213: -7663945912627517819
+    second: lvl2ChargeShot1
+  - first:
+      213: 8579962505045631005
+    second: lvl2ChargeShot2
+  - first:
+      213: -5414010483054441768
+    second: lvl2ChargeShot3
+  - first:
+      213: 7993726724586483737
+    second: lvl2ChargeShotImpact1
+  - first:
+      213: 2147207577680291516
+    second: lvl2ChargeShotImpact2
+  - first:
+      213: -3604203888742525451
+    second: lvl2ChargeShotImpact3
+  - first:
+      213: -8255676134667597532
+    second: lvl2ChargeShotImpact4
+  - first:
+      213: -982422237281955806
+    second: lvl2ChargeShotImpact5
+  - first:
+      213: -4195695111902833257
+    second: lvl2ChargeShotImpact6
+  - first:
+      213: 3940870174028486028
+    second: lvl2ChargeShotImpact7
+  - first:
+      213: -8561274268495279422
+    second: lvl2ChargeShotImpact8
+  - first:
+      213: 7736410810040419479
+    second: lvl1ChargeShotImpact8
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: busterShot1
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 91
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e027ac26784055b0800000000000000
+      internalID: -5381721882315251484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: busterShotImpact1
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 88
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e3dcc789fbe90b20800000000000000
+      internalID: 3101269275379028966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: busterShotImpact2
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 88
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b01d8bb63f30e03f0800000000000000
+      internalID: -932803728799903477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: busterShotImpact3
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 87
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 991dc17f08ff3b770800000000000000
+      internalID: 8625518640711389593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lvl1ChargeShotRelease1
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 62
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c6a3511308fb5b80800000000000000
+      internalID: -8404851587497613628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lvl1ChargeShotRelease2
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 57
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4201c18add9caa060800000000000000
+      internalID: 6965601727527260196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lvl1ChargeShot1
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 63
+        width: 28
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46cb10a41ab6b4f40800000000000000
+      internalID: 5713778892725140580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lvl1ChargeShot2
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 65
+        width: 32
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6608be7f30b223c60800000000000000
+      internalID: 7796341200976052326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lvl1ChargeShot3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 63
+        width: 38
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74e4c0c659d21d930800000000000000
+      internalID: 4166161250080542279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lvl1ChargeShot4
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 58
+        width: 36
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6705eecb570575b20800000000000000
+      internalID: 3123053333215858806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lvl1ChargeShot5
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 63
+        width: 38
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 523bffdcec80fdee0800000000000000
+      internalID: -1234258088563854555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lvl1ChargeShot6
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 61
+        width: 40
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89b5669640028bf90800000000000000
+      internalID: -6937760022643975272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lvl1ChargeShotImpact1
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 62
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfc7820994de0e320800000000000000
+      internalID: 2585327086317632764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lvl1ChargeShotImpact2
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 57
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3430f7e3399169440800000000000000
+      internalID: 4942165761285096259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lvl1ChargeShotImpact3
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 61
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e96b1fd3832a69d90800000000000000
+      internalID: -7091302200807147874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lvl1ChargeShotImpact4
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 57
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5c45ddeaf1c85c50800000000000000
+      internalID: 6654281732916071515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lvl1ChargeShotImpact5
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 61
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23d2018611fbafc10800000000000000
+      internalID: 2088191458720886066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lvl1ChargeShotImpact6
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 58
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2f56378973b75220800000000000000
+      internalID: 2474643854804279085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lvl1ChargeShotImpact7
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 57
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4ac07971d2906aa0800000000000000
+      internalID: -6169770061114324405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lvl2ChargeShotRelease1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 11
+        width: 14
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4892a22a45a96c390800000000000000
+      internalID: -7798376016456832636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lvl2ChargeShotRelease2
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 13
+        width: 23
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 426f0a35a994c5310800000000000000
+      internalID: 1395070911754860068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lvl2ChargeShot1
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 5
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 586a70c3cc134a590800000000000000
+      internalID: -7663945912627517819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lvl2ChargeShot2
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 9
+        width: 27
+        height: 24
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d106a639076221770800000000000000
+      internalID: 8579962505045631005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lvl2ChargeShot3
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 5
+        width: 40
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8da8c4b76229dd4b0800000000000000
+      internalID: -5414010483054441768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lvl2ChargeShotImpact1
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 11
+        width: 14
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 910368a7a1c6fee60800000000000000
+      internalID: 7993726724586483737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lvl2ChargeShotImpact2
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 7
+        width: 24
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb629ae5ae96ccd10800000000000000
+      internalID: 2147207577680291516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lvl2ChargeShotImpact3
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 7
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f59b69b8ab4bfdc0800000000000000
+      internalID: -3604203888742525451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lvl2ChargeShotImpact4
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 8
+        width: 26
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 429c774cb42fd6d80800000000000000
+      internalID: -8255676134667597532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lvl2ChargeShotImpact5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 7
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2205d572e2cbd52f0800000000000000
+      internalID: -982422237281955806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lvl2ChargeShotImpact6
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 6
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79550358685e5c5c0800000000000000
+      internalID: -4195695111902833257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lvl2ChargeShotImpact7
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 5
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8556ec2b88c0b630800000000000000
+      internalID: 3940870174028486028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lvl2ChargeShotImpact8
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 5
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ca85a1996e303980800000000000000
+      internalID: -8561274268495279422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lvl1ChargeShotImpact8
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 57
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79483f874a04d5b60800000000000000
+      internalID: 7736410810040419479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
