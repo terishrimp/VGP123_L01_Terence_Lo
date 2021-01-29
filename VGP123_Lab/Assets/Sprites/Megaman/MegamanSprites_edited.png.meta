@@ -430,7 +430,7 @@ TextureImporter:
     second: MegamanJumpCharge6
   - first:
       213: -3606541212254237952
-    second: MegamanJumpCharge7
+    second: MegamanIdleShoot
   - first:
       213: 2345844350566872717
     second: MegamanSprites_edited_143
@@ -10990,7 +10990,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 24
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -13504,7 +13504,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MegamanJumpCharge7
+      name: MegamanIdleShoot
       rect:
         serializedVersion: 2
         x: 413
