@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius,GroundLayer);
         Debug.Log(isGrounded);
         float hAxis = Input.GetAxisRaw("Horizontal");
