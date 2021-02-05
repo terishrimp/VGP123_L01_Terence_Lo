@@ -30,7 +30,6 @@ public class PlayerMovement : MonoBehaviour
     {
         
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius,GroundLayer);
-        Debug.Log(isGrounded);
         float hAxis = Input.GetAxisRaw("Horizontal");
         if (Input.GetButton("Jump"))
         {
@@ -45,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
         {
             jumpTimer = jumpPeriod;
         }
-        else if (isGrounded)
+        if (isGrounded)
         {
             animator.SetBool("isJumping", false);
             jumpTimer = 0f;
