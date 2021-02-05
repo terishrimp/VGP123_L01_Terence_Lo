@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float jumpPeriod = .75f;
     [SerializeField] LayerMask GroundLayer;
     [SerializeField] Transform groundCheck;
-    [SerializeField] float groundCheckRadius = .1f;
+    [SerializeField] float groundCheckLength = .1f;
     Rigidbody2D rb;
     Vector3 ogScale;
     Animator animator;
@@ -28,16 +28,26 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius,GroundLayer);
+        isGrounded = Physics2D.Raycast(groundCheck.position, transform.up * -1, groundCheckLength, GroundLayer);
+        Debug.DrawLine(groundCheck.position, groundCheck.position + (transform.up * -1 * groundCheckLength), Color.red);
         float hAxis = Input.GetAxisRaw("Horizontal");
+        if (Input.GetButtonDown("Jump") && isGrounded)
+        {
+            animator.SetBool("isJumping", true);
+            rb.velocity = new Vector2(rb.velocity.x, 0);
+            rb.AddForce(new Vector3(0, jumpForce / 3), ForceMode2D.Impulse);
+        }
         if (Input.GetButton("Jump"))
         {
+            if (isGrounded)
+            {
+                animator.SetTrigger("justJumped");
+            }
             animator.SetBool("isJumping", true);
             jumpTimer += Time.deltaTime;
             if(jumpTimer < jumpPeriod)
             {
-                rb.AddForce(new Vector3(0, jumpForce), ForceMode2D.Impulse);
+                rb.AddForce(new Vector3(0, jumpForce * Time.deltaTime), ForceMode2D.Impulse);
             }
         }
         else if (Input.GetButtonUp("Jump") && jumpTimer < jumpPeriod)
@@ -76,5 +86,8 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetBool("isShooting", false);
         }
+
+        animator.SetBool("isGrounded", isGrounded);
+        animator.SetFloat("yVelocity", rb.velocity.y);
     }
 }

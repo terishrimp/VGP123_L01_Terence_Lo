@@ -36,7 +36,7 @@ public class PlayerProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag != "Player" && collision.gameObject.GetComponent<PlayerProjectile>() == null && collision.gameObject.tag != "ickup")
+        if(collision.CompareTag("Player") && collision.gameObject.GetComponent<PlayerProjectile>() == null && collision.CompareTag("pickup"))
         {
             Destroy(gameObject);
         }

@@ -1466,7 +1466,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 334391466}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 51.07984, y: 0.6748992, z: 5.801696}
+  m_LocalPosition: {x: 44.14, y: 0.6748992, z: 5.801696}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 772428030}
@@ -2461,7 +2461,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 749710151}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 14.579842, y: 0.6748992, z: 5.801696}
+  m_LocalPosition: {x: 12.3, y: 0.6748992, z: 5.801696}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 772428030}
@@ -3157,7 +3157,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 885213750}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 32.82984, y: 0.67489934, z: 5.801696}
+  m_LocalPosition: {x: 28.22, y: 0.67489934, z: 5.801696}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 772428030}
@@ -9557,12 +9557,22 @@ PrefabInstance:
     - target: {fileID: 8612842567791216567, guid: 0506e40d1232f1f40a5b624d3c8888d6,
         type: 3}
       propertyPath: jumpForce
-      value: 2
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 8612842567791216567, guid: 0506e40d1232f1f40a5b624d3c8888d6,
         type: 3}
       propertyPath: moveSpeed
-      value: 250
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 8612842567791216567, guid: 0506e40d1232f1f40a5b624d3c8888d6,
+        type: 3}
+      propertyPath: jumpPeriod
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8612842567791216567, guid: 0506e40d1232f1f40a5b624d3c8888d6,
+        type: 3}
+      propertyPath: groundCheckLength
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 8612842567791216569, guid: 0506e40d1232f1f40a5b624d3c8888d6,
         type: 3}
@@ -9623,11 +9633,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Megaman
-      objectReference: {fileID: 0}
-    - target: {fileID: 8612842567791216572, guid: 0506e40d1232f1f40a5b624d3c8888d6,
-        type: 3}
-      propertyPath: m_TagString
-      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0506e40d1232f1f40a5b624d3c8888d6, type: 3}
