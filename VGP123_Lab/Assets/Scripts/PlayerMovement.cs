@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     Animator animator;
     float jumpTimer;
     bool isGrounded;
+    bool isOnWall;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +29,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*add Overlap to see if player is near wall
+          if next to wall, cause player friction to be smaller, allowing them to slide
+        allow wall-jumping
+         */
+        //isOnWall = Physics2D.OverlapBox()
         isGrounded = Physics2D.Raycast(groundCheck.position, transform.up * -1, groundCheckLength, GroundLayer);
         Debug.DrawLine(groundCheck.position, groundCheck.position + (transform.up * -1 * groundCheckLength), Color.red);
         float hAxis = Input.GetAxisRaw("Horizontal");
