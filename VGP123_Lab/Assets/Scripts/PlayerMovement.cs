@@ -5,37 +5,98 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Movement Properties")]
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] float jumpForce = 10f;
     [SerializeField] float jumpPeriod = .75f;
+
+    [Header("Ground Collision Properties")]
     [SerializeField] LayerMask GroundLayer;
-    [SerializeField] Transform groundCheck;
+    [SerializeField] Collider2D[] groundCollisions;
+    [SerializeField] Transform groundCheck = null;
     [SerializeField] float groundCheckLength = .1f;
+
+    [Header("Wall Collision Properties")]
+    [SerializeField] Transform wallCheck = null;
+    [SerializeField] float wallGravityScale = 4f;
+    [SerializeField] float wallCheckWidth = .25f;
+    [SerializeField] float wallCheckLength = 2f;
+    [SerializeField] float wallFriction = .1f;
     Rigidbody2D rb;
     Vector3 ogScale;
+    float ogMoveSpeed;
+    float ogFriction;
+    float ogGravity;
     Animator animator;
     float jumpTimer;
     bool isGrounded;
+<<<<<<< Updated upstream
+=======
+    bool isOnWall;
+    bool prevIsOnWall;
+>>>>>>> Stashed changes
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        ogGravity = rb.gravityScale;
+        ogFriction = rb.sharedMaterial.friction;
         ogScale = transform.localScale;
+        ogMoveSpeed = moveSpeed;
         jumpTimer = 0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        isGrounded = Physics2D.Raycast(groundCheck.position, transform.up * -1, groundCheckLength, GroundLayer);
-        Debug.DrawLine(groundCheck.position, groundCheck.position + (transform.up * -1 * groundCheckLength), Color.red);
+<<<<<<< Updated upstream
+=======
         float hAxis = Input.GetAxisRaw("Horizontal");
+        /*add Overlap to see if player is near wall
+          if next to wall, cause player friction to be smaller, allowing them to slide
+        allow wall-jumping
+         */
+>>>>>>> Stashed changes
+        isGrounded = Physics2D.Raycast(groundCheck.position, transform.up * -1, groundCheckLength, GroundLayer);
+        isOnWall = Physics2D.OverlapBox(wallCheck.position, new Vector2(wallCheckWidth, wallCheckLength), 0, GroundLayer);
+        if (isOnWall && !isGrounded)
+        {
+            //if (!Input.GetButton("Jump")) { 
+            //rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y / 2);
+            //}
+            wallCheck.GetComponent<SpriteRenderer>().color = Color.green;
+            rb.gravityScale = wallGravityScale;
+            rb.sharedMaterial.friction = wallFriction;
+            foreach (var groundCollision in groundCollisions)
+            {
+                groundCollision.sharedMaterial.friction = 0;
+            }
+        }
+        else
+        {
+            wallCheck.GetComponent<SpriteRenderer>().color = Color.red;
+            rb.gravityScale = ogGravity;
+            rb.sharedMaterial.friction = ogFriction;
+            foreach (var groundCollision in groundCollisions)
+            {
+                groundCollision.sharedMaterial.friction = 1f;
+            }
+
+        }
+        Debug.DrawLine(groundCheck.position, groundCheck.position + (transform.up * -1 * groundCheckLength), Color.red);
+
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             animator.SetBool("isJumping", true);
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.AddForce(new Vector3(0, jumpForce / 3), ForceMode2D.Impulse);
+        }
+        if (Input.GetButtonDown("Jump") && !isGrounded && isOnWall)
+        {
+            animator.SetBool("isJumping", true);
+            rb.velocity = new Vector2(rb.velocity.x, 0);
+            rb.AddForce(new Vector2(jumpForce/3 * transform.localScale.x * -1, jumpForce/3), ForceMode2D.Impulse);
         }
         if (Input.GetButton("Jump"))
         {
@@ -43,9 +104,13 @@ public class PlayerMovement : MonoBehaviour
             {
                 animator.SetTrigger("justJumped");
             }
+            else if (isOnWall)
+            {
+                //
+            }
             animator.SetBool("isJumping", true);
             jumpTimer += Time.deltaTime;
-            if(jumpTimer < jumpPeriod)
+            if (jumpTimer < jumpPeriod && !isOnWall)
             {
                 rb.AddForce(new Vector3(0, jumpForce * Time.deltaTime), ForceMode2D.Impulse);
             }
@@ -54,14 +119,18 @@ public class PlayerMovement : MonoBehaviour
         {
             jumpTimer = jumpPeriod;
         }
-        if (isGrounded)
+
+        if (isGrounded || isOnWall)
         {
             animator.SetBool("isJumping", false);
             jumpTimer = 0f;
         }
-        if (hAxis != 0)
+
+
+        if (hAxis != 0 && !isOnWall)
         {
-            rb.velocity = new Vector3(hAxis * moveSpeed * Time.deltaTime, rb.velocity.y, 0f);
+            moveSpeed = ogMoveSpeed;
+            rb.velocity = new Vector2(hAxis * moveSpeed * Time.deltaTime, rb.velocity.y);
             animator.SetBool("isWalking", true);
             if (hAxis < 0)
             {
@@ -72,10 +141,33 @@ public class PlayerMovement : MonoBehaviour
                 transform.localScale = ogScale;
             }
         }
-        else if (hAxis ==0)
+        else if (hAxis == 0 & !Input.GetButton("Jump"))
         {
-            rb.velocity = new Vector3(0, rb.velocity.y, 0f);
+            rb.velocity = new Vector2(0, rb.velocity.y);
             animator.SetBool("isWalking", false);
+        }
+        else if (isOnWall)
+        {
+
+            if (!prevIsOnWall)
+            {
+                moveSpeed = ogMoveSpeed / 4;
+                rb.velocity = new Vector2(rb.velocity.x, 0f);
+            }
+            if (Mathf.Sign(transform.localScale.x) == -1 && hAxis < 0)
+            {
+                rb.velocity = new Vector2(0, rb.velocity.y);
+                animator.SetBool("isWalking", false);
+            }
+            else if (Mathf.Sign(transform.localScale.x) == 1 && hAxis > 0)
+            {
+                rb.velocity = new Vector2(0, rb.velocity.y);
+                animator.SetBool("isWalking", false);
+            }
+            else if (!Input.GetButton("Jump"))
+            {
+                rb.velocity = new Vector2(hAxis * moveSpeed * Time.deltaTime, rb.velocity.y);
+            }
         }
 
         if (Input.GetButtonDown("Fire1"))
@@ -89,5 +181,6 @@ public class PlayerMovement : MonoBehaviour
 
         animator.SetBool("isGrounded", isGrounded);
         animator.SetFloat("yVelocity", rb.velocity.y);
+        prevIsOnWall = isOnWall;
     }
 }
