@@ -18,10 +18,10 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Wall Collision Properties")]
     [SerializeField] Transform wallCheck = null;
-    [SerializeField] float wallGravityScale = 4f;
+    [SerializeField] float wallGravityScale = .5f;
     [SerializeField] float wallCheckWidth = .25f;
-    [SerializeField] float wallCheckLength = 2f;
-    [SerializeField] float wallFriction = .1f;
+    [SerializeField] float wallCheckLength = 1f;
+    [SerializeField] float wallFriction = 0f;
     Rigidbody2D rb;
     Vector3 ogScale;
     float ogMoveSpeed;
@@ -30,11 +30,8 @@ public class PlayerMovement : MonoBehaviour
     Animator animator;
     float jumpTimer;
     bool isGrounded;
-<<<<<<< Updated upstream
-=======
     bool isOnWall;
     bool prevIsOnWall;
->>>>>>> Stashed changes
     // Start is called before the first frame update
     void Start()
     {
@@ -50,14 +47,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-<<<<<<< Updated upstream
-=======
         float hAxis = Input.GetAxisRaw("Horizontal");
-        /*add Overlap to see if player is near wall
-          if next to wall, cause player friction to be smaller, allowing them to slide
-        allow wall-jumping
-         */
->>>>>>> Stashed changes
         isGrounded = Physics2D.Raycast(groundCheck.position, transform.up * -1, groundCheckLength, GroundLayer);
         isOnWall = Physics2D.OverlapBox(wallCheck.position, new Vector2(wallCheckWidth, wallCheckLength), 0, GroundLayer);
         if (isOnWall && !isGrounded)
