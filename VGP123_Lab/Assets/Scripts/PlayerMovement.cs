@@ -12,33 +12,31 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Ground Collision Properties")]
     [SerializeField] LayerMask GroundLayer;
-    [SerializeField] Collider2D[] groundCollisions;
     [SerializeField] Transform groundCheck = null;
     [SerializeField] float groundCheckLength = .1f;
 
     [Header("Wall Collision Properties")]
     [SerializeField] Transform wallCheck = null;
-    [SerializeField] float wallGravityScale = .5f;
     [SerializeField] float wallCheckWidth = .25f;
     [SerializeField] float wallCheckLength = 1f;
-    [SerializeField] float wallFriction = 0f;
+    [SerializeField] float fallSpeedMax = -2f;
+    [SerializeField] float wallJumpPeriod = .1f;
     Rigidbody2D rb;
     Vector3 ogScale;
     float ogMoveSpeed;
-    float ogFriction;
-    float ogGravity;
     Animator animator;
     float jumpTimer;
-    bool isGrounded;
-    bool isOnWall;
-    bool prevIsOnWall;
+    float wallJumpTimer;
+    bool isGrounded = true;
+    bool isOnWall = false;
+    bool isJumping = false;
+    bool wallJumped = false;
+    bool prevIsOnWall = false;
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        ogGravity = rb.gravityScale;
-        ogFriction = rb.sharedMaterial.friction;
         ogScale = transform.localScale;
         ogMoveSpeed = moveSpeed;
         jumpTimer = 0f;
@@ -50,115 +48,181 @@ public class PlayerMovement : MonoBehaviour
         float hAxis = Input.GetAxisRaw("Horizontal");
         isGrounded = Physics2D.Raycast(groundCheck.position, transform.up * -1, groundCheckLength, GroundLayer);
         isOnWall = Physics2D.OverlapBox(wallCheck.position, new Vector2(wallCheckWidth, wallCheckLength), 0, GroundLayer);
-        if (isOnWall && !isGrounded)
+
+        if (isOnWall)
         {
-            //if (!Input.GetButton("Jump")) { 
-            //rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y / 2);
-            //}
-            wallCheck.GetComponent<SpriteRenderer>().color = Color.green;
-            rb.gravityScale = wallGravityScale;
-            rb.sharedMaterial.friction = wallFriction;
-            foreach (var groundCollision in groundCollisions)
+            if (!isGrounded)
             {
-                groundCollision.sharedMaterial.friction = 0;
+                if (!prevIsOnWall)
+                {
+                    // reduce y-velocity to zero on wall impact
+                    animator.SetTrigger("justHitWall");
+                    rb.velocity = new Vector2(rb.velocity.x, 0f);
+                }
+
+                //clamp fall speed
+                if (rb.velocity.y < fallSpeedMax)
+                {
+                    rb.velocity = new Vector2(rb.velocity.x, fallSpeedMax);
+                }
+
+
+                if (Input.GetButtonDown("Jump"))
+                {
+
+                    wallJumped = true;
+                    animator.SetTrigger("justJumped");
+                    //isJumping = true;
+                    rb.velocity = new Vector2(rb.velocity.x, 0);
+                    Debug.Log(new Vector2(jumpForce / 3 * transform.localScale.x * -1, jumpForce / 3));
+                    rb.AddForce(new Vector2(jumpForce / 3 * transform.localScale.x * -1, jumpForce / 3), ForceMode2D.Impulse);
+
+                }
             }
-        }
-        else
-        {
-            wallCheck.GetComponent<SpriteRenderer>().color = Color.red;
-            rb.gravityScale = ogGravity;
-            rb.sharedMaterial.friction = ogFriction;
-            foreach (var groundCollision in groundCollisions)
+            else if (isGrounded)
             {
-                groundCollision.sharedMaterial.friction = 1f;
+                if (Input.GetButtonDown("Jump"))
+                {
+                    animator.SetTrigger("justJumped");
+                    //isJumping = true;
+                    rb.velocity = new Vector2(rb.velocity.x, 0);
+                    rb.AddForce(new Vector3(0, jumpForce / 3), ForceMode2D.Impulse);
+                }
             }
 
-        }
-        Debug.DrawLine(groundCheck.position, groundCheck.position + (transform.up * -1 * groundCheckLength), Color.red);
+            //stop the player from trying to walk into the wall if they're not stationary
+            if (Mathf.Sign(transform.localScale.x) == Mathf.Sign(hAxis))
+            {
+                rb.velocity = new Vector2(0, rb.velocity.y);
+                animator.SetBool("isWalking", false);
+            }
+            else
+            {
 
-        if (Input.GetButtonDown("Jump") && isGrounded)
-        {
-            animator.SetBool("isJumping", true);
-            rb.velocity = new Vector2(rb.velocity.x, 0);
-            rb.AddForce(new Vector3(0, jumpForce / 3), ForceMode2D.Impulse);
+            }
         }
-        if (Input.GetButtonDown("Jump") && !isGrounded && isOnWall)
-        {
-            animator.SetBool("isJumping", true);
-            rb.velocity = new Vector2(rb.velocity.x, 0);
-            rb.AddForce(new Vector2(jumpForce/3 * transform.localScale.x * -1, jumpForce/3), ForceMode2D.Impulse);
-        }
-        if (Input.GetButton("Jump"))
+        else if (!isOnWall)
         {
             if (isGrounded)
             {
-                animator.SetTrigger("justJumped");
+                if (Input.GetButtonDown("Jump"))
+                {
+                    animator.SetTrigger("justJumped");
+                    //isJumping = true;
+                    rb.velocity = new Vector2(rb.velocity.x, 0);
+                    rb.AddForce(new Vector3(0, jumpForce / 3), ForceMode2D.Impulse);
+                }
             }
-            else if (isOnWall)
-            {
-                //
-            }
-            animator.SetBool("isJumping", true);
-            jumpTimer += Time.deltaTime;
-            if (jumpTimer < jumpPeriod && !isOnWall)
-            {
-                rb.AddForce(new Vector3(0, jumpForce * Time.deltaTime), ForceMode2D.Impulse);
-            }
-        }
-        else if (Input.GetButtonUp("Jump") && jumpTimer < jumpPeriod)
-        {
-            jumpTimer = jumpPeriod;
         }
 
         if (isGrounded || isOnWall)
         {
-            animator.SetBool("isJumping", false);
+            isJumping = false;
             jumpTimer = 0f;
+            wallJumpTimer = 0f;
+        }
+
+        if (isGrounded)
+        {
+
+            wallJumped = false;
+        }
+        else if (!isGrounded && !isOnWall)
+        {
+            isJumping = true;
         }
 
 
-        if (hAxis != 0 && !isOnWall)
+
+        CheckJump();
+        CheckHorizontalAxis(hAxis);
+        CheckFire();
+
+        animator.SetBool("isOnWall", isOnWall);
+        animator.SetBool("isJumping", isJumping);
+        animator.SetBool("isGrounded", isGrounded);
+        animator.SetFloat("yVelocity", rb.velocity.y);
+        prevIsOnWall = isOnWall;
+    }
+
+    void CheckJump()
+    {
+        if (Input.GetButton("Jump"))
+        {
+
+            if (!isGrounded && !wallJumped)
+            {
+
+                jumpTimer += Time.deltaTime;
+                if (jumpTimer < jumpPeriod)
+                {
+                    rb.AddForce(new Vector3(0, jumpForce * Time.deltaTime), ForceMode2D.Impulse);
+                }
+            }
+            else if (!isGrounded && wallJumped)
+            {
+
+                wallJumpTimer += Time.deltaTime;
+                if (wallJumpTimer < wallJumpPeriod)
+                {
+                    //rb.AddForce(new Vector2(jumpForce * transform.localScale.x * -1 * Time.deltaTime, jumpForce * Time.deltaTime), ForceMode2D.Impulse);
+                }
+            }
+
+        }
+
+        if (Input.GetButtonUp("Jump") && jumpTimer < jumpPeriod)
+        {
+            if (jumpTimer < jumpPeriod) { jumpTimer = jumpPeriod; }
+            if (wallJumpTimer < wallJumpPeriod)
+            {
+                wallJumpTimer = wallJumpPeriod;
+                wallJumped = false;
+            }
+        }
+
+    }
+
+    void CheckHorizontalAxis(float hAxis)
+    {
+        if (hAxis != 0)
         {
             moveSpeed = ogMoveSpeed;
-            rb.velocity = new Vector2(hAxis * moveSpeed * Time.deltaTime, rb.velocity.y);
+            if (!isOnWall)
+            {
+                //if (!wallJumped)
+                rb.velocity = new Vector2(hAxis * moveSpeed * Time.deltaTime, rb.velocity.y);
+                //else if (wallJumped && wallJumpTimer < wallJumpPeriod)
+                //{
+                //    var clampedHAxis = Mathf.Clamp(hAxis, -0.25f, 0.25f);
+                //    rb.velocity = new Vector2(clampedHAxis * moveSpeed * Time.deltaTime, rb.velocity.y);
+                //}
+            }
             animator.SetBool("isWalking", true);
+
+
             if (hAxis < 0)
             {
                 transform.localScale = new Vector3(-ogScale.x, ogScale.y, ogScale.z);
             }
-            else
+            else if (hAxis > 0)
             {
                 transform.localScale = ogScale;
             }
         }
-        else if (hAxis == 0 & !Input.GetButton("Jump"))
+
+        if (hAxis == 0)
         {
-            rb.velocity = new Vector2(0, rb.velocity.y);
+            if (!isOnWall && !wallJumped)
+            {
+                rb.velocity = new Vector2(0, rb.velocity.y);
+            }
             animator.SetBool("isWalking", false);
         }
-        else if (isOnWall)
-        {
 
-            if (!prevIsOnWall)
-            {
-                moveSpeed = ogMoveSpeed / 4;
-                rb.velocity = new Vector2(rb.velocity.x, 0f);
-            }
-            if (Mathf.Sign(transform.localScale.x) == -1 && hAxis < 0)
-            {
-                rb.velocity = new Vector2(0, rb.velocity.y);
-                animator.SetBool("isWalking", false);
-            }
-            else if (Mathf.Sign(transform.localScale.x) == 1 && hAxis > 0)
-            {
-                rb.velocity = new Vector2(0, rb.velocity.y);
-                animator.SetBool("isWalking", false);
-            }
-            else if (!Input.GetButton("Jump"))
-            {
-                rb.velocity = new Vector2(hAxis * moveSpeed * Time.deltaTime, rb.velocity.y);
-            }
-        }
+    }
+    void CheckFire()
+    {
 
         if (Input.GetButtonDown("Fire1"))
         {
@@ -168,9 +232,10 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetBool("isShooting", false);
         }
+    }
 
-        animator.SetBool("isGrounded", isGrounded);
-        animator.SetFloat("yVelocity", rb.velocity.y);
-        prevIsOnWall = isOnWall;
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawCube(wallCheck.position, new Vector3(wallCheckWidth, wallCheckLength, wallCheckWidth));
     }
 }
