@@ -7,5 +7,9 @@ PhysicsMaterial2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Floor
+<<<<<<< Updated upstream
   friction: 0
+=======
+  friction: 0.5
+>>>>>>> Stashed changes
   bounciness: 0

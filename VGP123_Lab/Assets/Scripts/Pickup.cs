@@ -5,6 +5,20 @@ using UnityEngine;
 public class Pickup : MonoBehaviour
 {
     [SerializeField] AudioClip pickupNoise = null;
+
+    GameObject collectableList;
+    private void Start()
+    {
+        collectableList = GameObject.FindGameObjectWithTag("collectableList");
+        if(collectableList == null)
+        {
+            var newList = Instantiate(new GameObject("Collectables"), new Vector3(0, 0, 0), Quaternion.identity);
+            newList.tag = "collectableList";
+            collectableList = newList;
+        }
+
+        transform.SetParent(collectableList.transform);
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.GetComponent<PlayerMovement>() != null) {
