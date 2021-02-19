@@ -36,11 +36,7 @@ public class PlayerProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-<<<<<<< Updated upstream
-        if(collision.CompareTag("Player") && collision.gameObject.GetComponent<PlayerProjectile>() == null && collision.CompareTag("pickup"))
-=======
         if (!collision.CompareTag("Player") && collision.gameObject.GetComponent<PlayerProjectile>() == null && !collision.CompareTag("pickup"))
->>>>>>> Stashed changes
         {
             Debug.Log(collision.gameObject.name);
             Destroy(gameObject);

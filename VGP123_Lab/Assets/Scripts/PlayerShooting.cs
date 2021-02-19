@@ -5,25 +5,20 @@ using UnityEngine;
 public class PlayerShooting : MonoBehaviour
 {
     [SerializeField] PlayerProjectile busterShot;
+    [SerializeField] PlayerProjectile levelOneShot;
+    [SerializeField] PlayerProjectile levelTwoShot;
     [SerializeField] Transform shotSpawn;
+    [SerializeField] float shotCdPeriod = .25f;
+    [SerializeField] float levelOneShotTimerPeriod = 1f;
+    [SerializeField] float levelTwoShotTimerPeriod = 2f;
 
 
+    float shotCd;
+    float chargeTimer = 0;
+    bool canShoot = true;
     // Update is called once per frame
     void Update()
     {
-<<<<<<< Updated upstream
-        if (Input.GetButtonUp("Fire1")) {
-            if (Mathf.Sign(transform.localScale.x) == -1)
-            {
-             var cBusterShot =  Instantiate(busterShot, shotSpawn.position, Quaternion.identity);
-                cBusterShot.SetMovingRight(false);
-            }
-            else
-            {
-                var cBusterShot = Instantiate(busterShot, shotSpawn.position, Quaternion.identity);
-                cBusterShot.SetMovingRight(true);
-            }
-=======
         //add cooldown to shooting so player can't spam
         if (shotCd < shotCdPeriod) shotCd += Time.deltaTime;
         if (shotCd > shotCdPeriod) canShoot = true;
@@ -63,7 +58,6 @@ public class PlayerShooting : MonoBehaviour
         {
             var cBusterShot = Instantiate(projectile, shotSpawn.position, Quaternion.identity);
             cBusterShot.SetMovingRight(true);
->>>>>>> Stashed changes
         }
     }
 }
