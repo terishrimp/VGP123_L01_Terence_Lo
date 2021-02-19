@@ -8,21 +8,25 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] PlayerProjectile levelOneShot;
     [SerializeField] PlayerProjectile levelTwoShot;
     [SerializeField] Transform shotSpawn;
-    [SerializeField] float shotCdPeriod = .25f;
     [SerializeField] float levelOneShotTimerPeriod = 1f;
     [SerializeField] float levelTwoShotTimerPeriod = 2f;
-
+    [SerializeField] float shotCdPeriod = .25f;
+    float chargeTimer = 0;
 
     float shotCd;
-    float chargeTimer = 0;
     bool canShoot = true;
+    float chargeOneTimerPeriod;
+    float chargeTwoTimerPeriod;
+
+    private void Start()
+    {
+        shotCd = shotCdPeriod;
+    }
     // Update is called once per frame
     void Update()
     {
-        //add cooldown to shooting so player can't spam
         if (shotCd < shotCdPeriod) shotCd += Time.deltaTime;
         if (shotCd > shotCdPeriod) canShoot = true;
-
         if (Input.GetButtonUp("Fire1") && canShoot)
         {
             if (chargeTimer < levelOneShotTimerPeriod)
