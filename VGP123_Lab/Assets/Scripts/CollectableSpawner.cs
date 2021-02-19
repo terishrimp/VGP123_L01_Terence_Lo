@@ -19,7 +19,6 @@ public class CollectableSpawner : MonoBehaviour
         {
             yield return new WaitForSeconds(Random.Range(minSpawnTime, maxSpawnTime));
             var randomNum = Random.Range(0, pickupList.Length);
-            Debug.Log(randomNum);
             Instantiate(pickupList[randomNum].gameObject, transform.position, Quaternion.identity);
         }
     }

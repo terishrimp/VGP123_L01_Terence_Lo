@@ -9,8 +9,10 @@ public class Pickup : MonoBehaviour
     GameObject collectableList;
     private void Start()
     {
+        if(GameObject.FindGameObjectWithTag("collectableList") != null) { 
         collectableList = GameObject.FindGameObjectWithTag("collectableList");
-        if(collectableList == null)
+        }
+        else
         {
             var newList = Instantiate(new GameObject("Collectables"), new Vector3(0, 0, 0), Quaternion.identity);
             newList.tag = "collectableList";
