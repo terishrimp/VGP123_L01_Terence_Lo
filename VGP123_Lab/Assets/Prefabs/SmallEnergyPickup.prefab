@@ -119,6 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickupNoise: {fileID: 0}
+  player: {fileID: 8612842567791216567, guid: 0506e40d1232f1f40a5b624d3c8888d6, type: 3}
 --- !u!50 &1706360335000456072
 Rigidbody2D:
   serializedVersion: 4

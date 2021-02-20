@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(Animator))]
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement Properties")]
@@ -133,7 +135,6 @@ public class PlayerMovement : MonoBehaviour
 
         CheckJump();
         CheckHorizontalAxis(hAxis);
-        CheckFire();
 
         animator.SetBool("isOnWall", isOnWall);
         animator.SetBool("isJumping", isJumping);
@@ -217,18 +218,6 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("isWalking", false);
         }
 
-    }
-    void CheckFire()
-    {
-
-        if (Input.GetButtonDown("Fire1"))
-        {
-            animator.SetBool("isShooting", true);
-        }
-        else if (Input.GetButtonUp("Fire1"))
-        {
-            animator.SetBool("isShooting", false);
-        }
     }
 
     private void OnDrawGizmosSelected()

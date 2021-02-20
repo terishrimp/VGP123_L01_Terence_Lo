@@ -11,9 +11,6 @@ GameObject:
   - component: {fileID: 8388128408303574115}
   - component: {fileID: 4381453011141881662}
   - component: {fileID: 650695504766899802}
-  - component: {fileID: 8250679175742603745}
-  - component: {fileID: -6303310167076953061}
-  - component: {fileID: -6528246512554650792}
   m_Layer: 6
   m_Name: LargeEnergyPickup
   m_TagString: Untagged
@@ -119,6 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickupNoise: {fileID: 0}
+  player: {fileID: 8612842567791216567, guid: 0506e40d1232f1f40a5b624d3c8888d6, type: 3}
 --- !u!50 &-6303310167076953061
 Rigidbody2D:
   serializedVersion: 4

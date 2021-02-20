@@ -6,9 +6,11 @@ public class Pickup : MonoBehaviour
 {
     [SerializeField] AudioClip pickupNoise = null;
 
+    [SerializeField] PlayerMovement player = null;
+
     GameObject collectableList;
     private void Start()
-    {
+    { 
         if(GameObject.FindGameObjectWithTag("collectableList") != null) { 
         collectableList = GameObject.FindGameObjectWithTag("collectableList");
         }

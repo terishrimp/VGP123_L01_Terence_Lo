@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class PlayerShooting : MonoBehaviour
 {
     [SerializeField] PlayerProjectile busterShot;
     [SerializeField] PlayerProjectile levelOneShot;
     [SerializeField] PlayerProjectile levelTwoShot;
+    [SerializeField] Animator fireChargeAnim;
     [SerializeField] Transform shotSpawn;
     [SerializeField] float levelOneShotTimerPeriod = 1f;
     [SerializeField] float levelTwoShotTimerPeriod = 2f;
@@ -15,18 +17,22 @@ public class PlayerShooting : MonoBehaviour
 
     float shotCd;
     bool canShoot = true;
-    float chargeOneTimerPeriod;
-    float chargeTwoTimerPeriod;
+    bool isShooting = false;
+    bool isCharging = false;
+    bool onLevelOneCharge = false;
+    bool onLevelTwoCharge = false;
+    Animator animator;
 
     private void Start()
     {
+        animator = GetComponent<Animator>();
         shotCd = shotCdPeriod;
     }
     // Update is called once per frame
     void Update()
     {
-        if (shotCd < shotCdPeriod) shotCd += Time.deltaTime;
-        if (shotCd > shotCdPeriod) canShoot = true;
+        if (shotCd < shotCdPeriod && !Input.GetButton("Fire1")) shotCd += Time.deltaTime;
+        if (shotCd >= shotCdPeriod) canShoot = true;
         if (Input.GetButtonUp("Fire1") && canShoot)
         {
             if (chargeTimer < levelOneShotTimerPeriod)
@@ -37,19 +43,46 @@ public class PlayerShooting : MonoBehaviour
                 FireShot(levelTwoShot);
             shotCd = 0;
             canShoot = false;
+            isShooting = false;
+            isCharging = false;
+            onLevelOneCharge = false;
+            onLevelTwoCharge = false;
         }
-        if (Input.GetButtonDown("Fire1") && canShoot)
+        else if (Input.GetButtonDown("Fire1") && canShoot)
         {
+
+            isShooting = true;
             chargeTimer = 0;
             FireShot(busterShot);
 
         }
-        if (Input.GetButton("Fire1") && canShoot)
+        else if (Input.GetButton("Fire1") && canShoot)
         {
             chargeTimer += Time.deltaTime;
-        }
-    }
+            if (chargeTimer >= levelOneShotTimerPeriod && chargeTimer < levelTwoShotTimerPeriod)
+            {
+                if (!isCharging)
+                {
+                    isCharging = true;
+                }
+                if (!onLevelOneCharge)
+                {
+                    onLevelOneCharge = true;
+                }
+            }
+            else if (chargeTimer >= levelTwoShotTimerPeriod) {
+                if (!onLevelTwoCharge)
+                {
+                    onLevelTwoCharge = true;
+                }
+            }
 
+        }
+        fireChargeAnim.SetBool("onLevelOneCharge", onLevelOneCharge);
+        fireChargeAnim.SetBool("onLevelTwoCharge", onLevelTwoCharge);
+        fireChargeAnim.SetBool("isCharging", isCharging);
+        animator.SetBool("isShooting", isShooting);
+    }
 
     void FireShot(PlayerProjectile projectile)
     {
