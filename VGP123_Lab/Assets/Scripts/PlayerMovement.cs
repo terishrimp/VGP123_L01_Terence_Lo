@@ -188,13 +188,13 @@ public class PlayerMovement : MonoBehaviour
             moveSpeed = ogMoveSpeed;
             if (!isOnWall)
             {
-                //if (!wallJumped)
-                //    rb.velocity = new Vector2(hAxis * moveSpeed * Time.deltaTime, rb.velocity.y);
-                //else if (wallJumped && wallJumpTimer < wallJumpPeriod)
-                //{
+                if (!wallJumped)
+                    rb.velocity = new Vector2(hAxis * moveSpeed * Time.deltaTime, rb.velocity.y);
+                else if (wallJumped && wallJumpTimer < wallJumpPeriod)
+                {
                     var clampedHAxis = Mathf.Clamp(hAxis, -0.25f, 0.25f);
                     rb.velocity = new Vector2(clampedHAxis * moveSpeed * Time.deltaTime, rb.velocity.y);
-                //}
+                }
             }
             animator.SetBool("isWalking", true);
 
@@ -209,7 +209,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (hAxis == 0)
+        else 
         {
             if (!isOnWall && !wallJumped)
             {
