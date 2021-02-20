@@ -11,9 +11,14 @@ GameObject:
   - component: {fileID: 8388128408303574115}
   - component: {fileID: 4381453011141881662}
   - component: {fileID: 650695504766899802}
-  m_Layer: 6
+  - component: {fileID: -6528246512554650792}
+  - component: {fileID: 8250679175742603745}
+  - component: {fileID: 787539115}
+  - component: {fileID: 787539114}
+  - component: {fileID: 787539116}
+  m_Layer: 0
   m_Name: LargeEnergyPickup
-  m_TagString: Untagged
+  m_TagString: pickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103,6 +108,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!58 &-6528246512554650792
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7354447151745813225}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.29166666}
+  serializedVersion: 2
+  m_Radius: 0.29166666
 --- !u!114 &8250679175742603745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,7 +138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickupNoise: {fileID: 0}
   player: {fileID: 8612842567791216567, guid: 0506e40d1232f1f40a5b624d3c8888d6, type: 3}
---- !u!50 &-6303310167076953061
+--- !u!50 &787539115
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -138,7 +159,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &-6528246512554650792
+--- !u!58 &787539114
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -154,3 +175,17 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.29166666}
   serializedVersion: 2
   m_Radius: 0.29166666
+--- !u!114 &787539116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7354447151745813225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eab536b2515d6f429a8a8b99925d37e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickupNoise: {fileID: 0}
+  player: {fileID: 0}

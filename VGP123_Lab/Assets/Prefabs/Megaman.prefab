@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5dbc0c1a224a0d4a943ba9c9a5564f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 900
+  moveSpeed: 500
   jumpForce: 30
   jumpPeriod: 0.25
   GroundLayer:
@@ -411,12 +411,12 @@ PrefabInstance:
     - target: {fileID: 8118330140033756838, guid: aa3c9fa9589a43b4caf5783a1dafd8bb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6
+      value: -0.11
       objectReference: {fileID: 0}
     - target: {fileID: 8118330140033756838, guid: aa3c9fa9589a43b4caf5783a1dafd8bb,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.38
+      value: 0.79
       objectReference: {fileID: 0}
     - target: {fileID: 8118330140033756838, guid: aa3c9fa9589a43b4caf5783a1dafd8bb,
         type: 3}

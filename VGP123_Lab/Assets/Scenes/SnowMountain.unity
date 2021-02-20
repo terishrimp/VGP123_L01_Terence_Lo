@@ -2585,63 +2585,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!1 &787539110 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7354447151745813225, guid: 3aa6b9f0564b6504099afc066f125765,
-    type: 3}
-  m_PrefabInstance: {fileID: 2678537542475367079}
-  m_PrefabAsset: {fileID: 0}
---- !u!58 &787539114
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 787539110}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.29166666}
-  serializedVersion: 2
-  m_Radius: 0.29166666
---- !u!50 &787539115
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 787539110}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
---- !u!114 &787539116
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 787539110}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2eab536b2515d6f429a8a8b99925d37e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pickupNoise: {fileID: 0}
-  player: {fileID: 0}
 --- !u!1 &787672489
 GameObject:
   m_ObjectHideFlags: 0
@@ -8478,16 +8421,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1706360335000456072, guid: cc3149dd7da86a746b6b2362c14f5bc5,
-        type: 3}
-      propertyPath: m_BodyType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1706360335000456072, guid: cc3149dd7da86a746b6b2362c14f5bc5,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 1706360335000456074, guid: cc3149dd7da86a746b6b2362c14f5bc5,
         type: 3}
       propertyPath: m_RootOrder
@@ -8543,25 +8476,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1706360335000456075, guid: cc3149dd7da86a746b6b2362c14f5bc5,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1706360335000456078, guid: cc3149dd7da86a746b6b2362c14f5bc5,
         type: 3}
       propertyPath: m_Name
       value: SmallEnergyPickup
-      objectReference: {fileID: 0}
-    - target: {fileID: 1706360335000456078, guid: cc3149dd7da86a746b6b2362c14f5bc5,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1706360335000456078, guid: cc3149dd7da86a746b6b2362c14f5bc5,
-        type: 3}
-      propertyPath: m_TagString
-      value: pickup
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc3149dd7da86a746b6b2362c14f5bc5, type: 3}
@@ -8576,16 +8494,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LargeEnergyPickup
-      objectReference: {fileID: 0}
-    - target: {fileID: 7354447151745813225, guid: 3aa6b9f0564b6504099afc066f125765,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7354447151745813225, guid: 3aa6b9f0564b6504099afc066f125765,
-        type: 3}
-      propertyPath: m_TagString
-      value: pickup
       objectReference: {fileID: 0}
     - target: {fileID: 8388128408303574115, guid: 3aa6b9f0564b6504099afc066f125765,
         type: 3}
@@ -8656,21 +8564,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LargeHealthPickup
       objectReference: {fileID: 0}
-    - target: {fileID: 3273224195288184216, guid: 3bde670ae4acd904cb94a8e01ddaa9b2,
-        type: 3}
-      propertyPath: m_TagString
-      value: pickup
-      objectReference: {fileID: 0}
-    - target: {fileID: 3273224195288184217, guid: 3bde670ae4acd904cb94a8e01ddaa9b2,
-        type: 3}
-      propertyPath: m_BodyType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3273224195288184217, guid: 3bde670ae4acd904cb94a8e01ddaa9b2,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3273224195288184292, guid: 3bde670ae4acd904cb94a8e01ddaa9b2,
         type: 3}
       propertyPath: m_RootOrder
@@ -8724,11 +8617,6 @@ PrefabInstance:
     - target: {fileID: 3273224195288184292, guid: 3bde670ae4acd904cb94a8e01ddaa9b2,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3273224195288184293, guid: 3bde670ae4acd904cb94a8e01ddaa9b2,
-        type: 3}
-      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
