@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4516719601011870279}
   - component: {fileID: 4516719601011870278}
   m_Layer: 0
-  m_Name: Projectile
+  m_Name: BusterShot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -135,5 +135,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba2044c053bc84b46b35dd43f3893b47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpeed: 250
+  projectileSpeed: 400
   lifeTime: 3

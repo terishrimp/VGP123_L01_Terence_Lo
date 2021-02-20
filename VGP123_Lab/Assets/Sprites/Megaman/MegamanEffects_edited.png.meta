@@ -1,0 +1,792 @@
+fileFormatVersion: 2
+guid: 07a86fc987f356a4291de34550bd2113
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6887815234007615648
+    second: ChargeLevelOne_01
+  - first:
+      213: 3762028718540497241
+    second: ChargeLevelOne_02
+  - first:
+      213: -8042296715531723049
+    second: ChargeLevelOne_03
+  - first:
+      213: -5986773124887695172
+    second: ChargeLevelOne_04
+  - first:
+      213: -1883201520559244411
+    second: ChargeLevelOne_05
+  - first:
+      213: 7022749149808103219
+    second: ChargeLevelOne_06
+  - first:
+      213: -3571537490235904795
+    second: ChargeLevelOne_07
+  - first:
+      213: -7566956491177319081
+    second: ChargeLevelOne_08
+  - first:
+      213: -6021009484514338289
+    second: ChargeLevelOne_09
+  - first:
+      213: 2760323645453806243
+    second: ChargeLevelOne_10
+  - first:
+      213: -4233851573250653504
+    second: ChargeLevelOne_11
+  - first:
+      213: -2815686166861442600
+    second: ChargeLevelTwo_01
+  - first:
+      213: 2556872390034095069
+    second: ChargeLevelTwo_02
+  - first:
+      213: -1578315145849009993
+    second: ChargeLevelTwo_03
+  - first:
+      213: 6036192627039225624
+    second: ChargeLevelTwo_04
+  - first:
+      213: 2900758787096515223
+    second: ChargeLevelTwo_05
+  - first:
+      213: -6087901642991658881
+    second: ChargeLevelTwo_06
+  - first:
+      213: 6261150994973329263
+    second: ChargeLevelTwo_07
+  - first:
+      213: -4330311998715445104
+    second: ChargeLevelTwo_08
+  - first:
+      213: 5678701175772741765
+    second: ChargeLevelTwo_09
+  - first:
+      213: 19800946114004190
+    second: ChargeLevelTwo_10
+  - first:
+      213: 2150310991149756729
+    second: ChargeLevelTwo_11
+  - first:
+      213: -7059074427090009287
+    second: WallSlide_01
+  - first:
+      213: 4487156000920067526
+    second: WallSlide_02
+  - first:
+      213: -7895659267617664108
+    second: WallSlide_03
+  - first:
+      213: -6340276617988467456
+    second: WallSlide_04
+  - first:
+      213: -3098461955148300545
+    second: WallSlide_05
+  - first:
+      213: 2211532725691831210
+    second: WallSlide_06
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 24
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ChargeLevelOne_01
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 185
+        width: 2
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 067b372b9809960a0800000000000000
+      internalID: -6887815234007615648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeLevelOne_02
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 187
+        width: 44
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 951ac6bff29653430800000000000000
+      internalID: 3762028718540497241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeLevelOne_03
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 190
+        width: 40
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ded0744fb5046090800000000000000
+      internalID: -8042296715531723049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeLevelOne_04
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 192
+        width: 34
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb0b63cef85baeca0800000000000000
+      internalID: -5986773124887695172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeLevelOne_05
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 188
+        width: 31
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58b3796d1368dd5e0800000000000000
+      internalID: -1883201520559244411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeLevelOne_06
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 197
+        width: 40
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33f0df4c421d57160800000000000000
+      internalID: 7022749149808103219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeLevelOne_07
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 188
+        width: 36
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ecaf7053995f6ec0800000000000000
+      internalID: -3571537490235904795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeLevelOne_08
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 190
+        width: 40
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7552a88a925ccf690800000000000000
+      internalID: -7566956491177319081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeLevelOne_09
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 200
+        width: 37
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0ad34646c3117ca0800000000000000
+      internalID: -6021009484514338289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeLevelOne_10
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 196
+        width: 30
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3aaa2601bb3ae4620800000000000000
+      internalID: 2760323645453806243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeLevelOne_11
+      rect:
+        serializedVersion: 2
+        x: 491
+        y: 203
+        width: 26
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c28aa01d665e35c0800000000000000
+      internalID: -4233851573250653504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeLevelTwo_01
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 124
+        width: 4
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d11e31795cace8d0800000000000000
+      internalID: -2815686166861442600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeLevelTwo_02
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 128
+        width: 48
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddb7cff44e5db7320800000000000000
+      internalID: 2556872390034095069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeLevelTwo_03
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 130
+        width: 43
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b80d04bcb2b81ae0800000000000000
+      internalID: -1578315145849009993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeLevelTwo_04
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 132
+        width: 38
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8174182963dd4c350800000000000000
+      internalID: 6036192627039225624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeLevelTwo_05
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 128
+        width: 34
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7921bfb7fb0914820800000000000000
+      internalID: 2900758787096515223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeLevelTwo_06
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 130
+        width: 44
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7817f5f5bd638ba0800000000000000
+      internalID: -6087901642991658881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeLevelTwo_07
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 128
+        width: 40
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f67087c28a314e650800000000000000
+      internalID: 6261150994973329263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeLevelTwo_08
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 130
+        width: 44
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09044fd1e24a7e3c0800000000000000
+      internalID: -4330311998715445104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeLevelTwo_09
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 133
+        width: 39
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 580078fd1accece40800000000000000
+      internalID: 5678701175772741765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeLevelTwo_10
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 136
+        width: 34
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed487570bd8564000800000000000000
+      internalID: 19800946114004190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeLevelTwo_11
+      rect:
+        serializedVersion: 2
+        x: 489
+        y: 145
+        width: 30
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9317910247077dd10800000000000000
+      internalID: 2150310991149756729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WallSlide_01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 933814a8531290e90800000000000000
+      internalID: -7059074427090009287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WallSlide_02
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 1
+        width: 10
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cd5a9edb94954e30800000000000000
+      internalID: 4487156000920067526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WallSlide_03
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 1
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 493d026aabbfc6290800000000000000
+      internalID: -7895659267617664108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WallSlide_04
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 1
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00515171200d208a0800000000000000
+      internalID: -6340276617988467456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WallSlide_05
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 1
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffeb255a44d0005d0800000000000000
+      internalID: -3098461955148300545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WallSlide_06
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 1
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa3530cfb41f0be10800000000000000
+      internalID: 2211532725691831210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

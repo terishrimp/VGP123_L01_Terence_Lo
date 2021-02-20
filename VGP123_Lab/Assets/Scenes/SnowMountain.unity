@@ -2643,6 +2643,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickupNoise: {fileID: 0}
+  player: {fileID: 0}
 --- !u!1 &787672489
 GameObject:
   m_ObjectHideFlags: 0
@@ -7578,6 +7579,49 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &1732733679
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1732733681}
+  - component: {fileID: 1732733680}
+  m_Layer: 0
+  m_Name: FrameRate Cap
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1732733680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732733679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0caf3cc1a464334458b4f29dd05ddf62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1732733681
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732733679}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 12.001408, y: -1.2178982, z: -0.3781494}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1733988559
 GameObject:
   m_ObjectHideFlags: 0
@@ -8775,7 +8819,7 @@ PrefabInstance:
     - target: {fileID: 3755887702641837972, guid: 0506e40d1232f1f40a5b624d3c8888d6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.66
+      value: 0.726
       objectReference: {fileID: 0}
     - target: {fileID: 8612842566895770012, guid: 0506e40d1232f1f40a5b624d3c8888d6,
         type: 3}
@@ -8822,7 +8866,7 @@ PrefabInstance:
     - target: {fileID: 8612842567791216567, guid: 0506e40d1232f1f40a5b624d3c8888d6,
         type: 3}
       propertyPath: wallCheckLength
-      value: 1.13
+      value: 0.92
       objectReference: {fileID: 0}
     - target: {fileID: 8612842567791216567, guid: 0506e40d1232f1f40a5b624d3c8888d6,
         type: 3}
