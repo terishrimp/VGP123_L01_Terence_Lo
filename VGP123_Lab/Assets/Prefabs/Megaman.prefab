@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 8612842567791216570}
   - component: {fileID: 8612842567791216566}
   - component: {fileID: 8612842567791216565}
+  - component: {fileID: 312244031}
   m_Layer: 0
   m_Name: Megaman
   m_TagString: Player
@@ -67,6 +68,7 @@ Transform:
   - {fileID: 8612842566895770012}
   - {fileID: 8612842568326819643}
   - {fileID: 3755887702641837972}
+  - {fileID: 5716398403046076394}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -119,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5dbc0c1a224a0d4a943ba9c9a5564f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1200
+  moveSpeed: 900
   jumpForce: 30
   jumpPeriod: 0.25
   GroundLayer:
@@ -221,11 +223,37 @@ MonoBehaviour:
     type: 3}
   levelTwoShot: {fileID: 4516719601011870278, guid: b03c2f69c76d5884fa0c15ae8a549ce8,
     type: 3}
-  fireChargeAnim: {fileID: 0}
+  fireChargeAnim: {fileID: 981540347977167387}
   shotSpawn: {fileID: 8612842568326819643}
   levelOneShotTimerPeriod: 1
   levelTwoShotTimerPeriod: 2
   shotCdPeriod: 0.25
+--- !u!61 &312244031
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8612842567791216572}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.68467593}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.47136688, y: 1.3694518}
+  m_EdgeRadius: 0
 --- !u!1 &8612842568326819644
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,3 +396,84 @@ Transform:
   m_Father: {fileID: 8612842567791216569}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &4611299198474961228
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8612842567791216569}
+    m_Modifications:
+    - target: {fileID: 8118330140033756838, guid: aa3c9fa9589a43b4caf5783a1dafd8bb,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8118330140033756838, guid: aa3c9fa9589a43b4caf5783a1dafd8bb,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8118330140033756838, guid: aa3c9fa9589a43b4caf5783a1dafd8bb,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 8118330140033756838, guid: aa3c9fa9589a43b4caf5783a1dafd8bb,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8118330140033756838, guid: aa3c9fa9589a43b4caf5783a1dafd8bb,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8118330140033756838, guid: aa3c9fa9589a43b4caf5783a1dafd8bb,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8118330140033756838, guid: aa3c9fa9589a43b4caf5783a1dafd8bb,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8118330140033756838, guid: aa3c9fa9589a43b4caf5783a1dafd8bb,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8118330140033756838, guid: aa3c9fa9589a43b4caf5783a1dafd8bb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8118330140033756838, guid: aa3c9fa9589a43b4caf5783a1dafd8bb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8118330140033756838, guid: aa3c9fa9589a43b4caf5783a1dafd8bb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004113889121395897, guid: aa3c9fa9589a43b4caf5783a1dafd8bb,
+        type: 3}
+      propertyPath: m_Name
+      value: FireCharge
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: aa3c9fa9589a43b4caf5783a1dafd8bb, type: 3}
+--- !u!4 &5716398403046076394 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8118330140033756838, guid: aa3c9fa9589a43b4caf5783a1dafd8bb,
+    type: 3}
+  m_PrefabInstance: {fileID: 4611299198474961228}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &981540347977167387 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3630325223867331415, guid: aa3c9fa9589a43b4caf5783a1dafd8bb,
+    type: 3}
+  m_PrefabInstance: {fileID: 4611299198474961228}
+  m_PrefabAsset: {fileID: 0}
