@@ -191,12 +191,12 @@ public class PlayerMovement : MonoBehaviour
                 if (!wallJumped)
                     rb.velocity = new Vector2(hAxis * moveSpeed * Time.deltaTime, rb.velocity.y);
                 else if (wallJumped && wallJumpTimer < wallJumpPeriod)
-                {
-                    var clampedHAxis = Mathf.Clamp(hAxis, -0.25f, 0.25f);
-                    rb.velocity = new Vector2(clampedHAxis * moveSpeed * Time.deltaTime, rb.velocity.y);
-                }
+            {
+                var clampedHAxis = Mathf.Clamp(hAxis, -0.25f, 0.25f);
+                rb.velocity = new Vector2(clampedHAxis * moveSpeed * Time.deltaTime, rb.velocity.y);
             }
-            animator.SetBool("isWalking", true);
+        }
+        animator.SetBool("isWalking", true);
 
 
             if (hAxis < 0)
