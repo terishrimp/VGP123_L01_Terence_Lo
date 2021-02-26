@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4516719601011870276}
   - component: {fileID: 4516719601011870279}
   - component: {fileID: 4516719601011870278}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BusterShot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,3 +137,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpeed: 700
   lifeTime: 3
+  layerMasksToIgnore:
+    serializedVersion: 2
+    m_Bits: 580

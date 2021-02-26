@@ -2,10 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerProjectile : MonoBehaviour
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Collider2D))]
+public class Projectile : MonoBehaviour
 {
     [SerializeField] float projectileSpeed = 1f;
     [SerializeField] float lifeTime = 3f;
+    [SerializeField] protected LayerMask layerMasksToIgnore;
+    [SerializeField] protected int damage = 1;
+
     private Rigidbody2D rb;
     private bool movingRight = false;
     Vector3 ogScale;
@@ -42,11 +47,14 @@ public class PlayerProjectile : MonoBehaviour
         return movingRight;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && collision.gameObject.GetComponent<PlayerProjectile>() == null && collision.CompareTag("pickup"))
-        {
-            Destroy(gameObject);
-        }
+        Debug.Log(gameObject.name + " has hit the Trigger " + collision.gameObject.name);
+    }
+
+
+    public int GetDamage()
+    {
+        return damage;
     }
 }

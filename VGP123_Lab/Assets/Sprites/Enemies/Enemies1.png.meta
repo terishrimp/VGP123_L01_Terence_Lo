@@ -100,7 +100,7 @@ TextureImporter:
     second: Enemies1_31
   - first:
       213: -6801586968441037654
-    second: BunnyWalk1
+    second: BunnyIdle
   - first:
       213: -6433113622045712506
     second: BunnyWalk2
@@ -112,16 +112,16 @@ TextureImporter:
     second: BunnyWalk4
   - first:
       213: 8345048147729418631
-    second: BunnyWalk5
+    second: BunnyShoot1
   - first:
       213: 1899665811111084922
-    second: BunnyWalk6
+    second: BunnyShoot2
   - first:
       213: 3108534759555273793
-    second: Enemies1_38
+    second: BunnyShot1
   - first:
       213: -9143115939191878292
-    second: Enemies1_39
+    second: BunnyShot3
   - first:
       213: 3396730177323429652
     second: Enemies1_40
@@ -571,7 +571,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 24
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -1300,7 +1300,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BunnyWalk1
+      name: BunnyIdle
       rect:
         serializedVersion: 2
         x: 6
@@ -1384,7 +1384,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BunnyWalk5
+      name: BunnyShoot1
       rect:
         serializedVersion: 2
         x: 207
@@ -1405,7 +1405,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BunnyWalk6
+      name: BunnyShoot2
       rect:
         serializedVersion: 2
         x: 257
@@ -1426,15 +1426,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemies1_38
+      name: BunnyShot1
       rect:
         serializedVersion: 2
         x: 315
         y: 890
         width: 10
         height: 8
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1447,15 +1447,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemies1_39
+      name: BunnyShot3
       rect:
         serializedVersion: 2
         x: 362
         y: 888
         width: 16
         height: 12
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
