@@ -23,8 +23,6 @@ public class ParallaxManager : MonoBehaviour
 
         if (isMoving)
         {
-            //transform.position = initialPos + (target.position - initialTargetPos);
-
              transform.position = new Vector3(initialPos.x + parallaxDist.x, initialPos.y + parallaxDist.y, initialPos.z);
         }
     }
@@ -34,7 +32,6 @@ public class ParallaxManager : MonoBehaviour
         isMoving = value;
         initialTargetPos = target.position;
     }
-    
     public bool GetIsMoving()
     {
         initialPos = transform.position;
@@ -50,6 +47,7 @@ public class ParallaxManager : MonoBehaviour
     {
         parallaxXFactor = value;
     }
+
     public void SetParallaxYFactor(float value)
     {
         parallaxYFactor = value;

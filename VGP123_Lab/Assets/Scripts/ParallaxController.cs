@@ -48,11 +48,11 @@ public class ParallaxController : MonoBehaviour
     {
         parallaxXFactor = value;
     }
-
     public float GetParallaxXFactor()
     {
         return parallaxXFactor;
     }
+
     public void SetParallaxYFactor(float value)
     {
         parallaxYFactor = value;
@@ -61,11 +61,11 @@ public class ParallaxController : MonoBehaviour
     {
         return parallaxYFactor;
     }
+
     public void SetParallaxBackground(ParallaxManager parallaxBackground)
     {
         this.parallaxBackground = parallaxBackground;
     }
-
     public ParallaxManager GetParallaxBackground()
     {
         return parallaxBackground;
