@@ -103,7 +103,9 @@ public class BunnyAI : MonoBehaviour
         }
     }
 
+#pragma warning disable IDE0051 // Remove unused private members
     void Fire()
+#pragma warning restore IDE0051 // Remove unused private members
     {
         var cProjectile = Instantiate(shotPrefab, playerRaycastOrigin.position, Quaternion.identity);
     }

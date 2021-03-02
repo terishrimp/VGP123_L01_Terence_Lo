@@ -54,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
         if (isOnWall)
         {
             if (!prevIsOnWall)
-            {                    
+            {
                 // reduce y-velocity to zero on wall impact
                 rb.velocity = new Vector2(rb.velocity.x, 0f);
                 animator.SetTrigger("justHitWall");
@@ -74,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
                     wallJumped = true;
                     animator.SetTrigger("justJumped");
                     rb.velocity = new Vector2(0, 0);
-                    rb.AddForce(new Vector2(jumpForce / 3 * transform.localScale.x * -1, jumpForce/2), ForceMode2D.Impulse);
+                    rb.AddForce(new Vector2(jumpForce / 3 * transform.localScale.x * -1, jumpForce / 2), ForceMode2D.Impulse);
 
                 }
             }
@@ -191,12 +191,11 @@ public class PlayerMovement : MonoBehaviour
                 if (!wallJumped)
                     rb.velocity = new Vector2(hAxis * moveSpeed * Time.deltaTime, rb.velocity.y);
                 else if (wallJumped && wallJumpTimer < wallJumpPeriod)
-            {
-                var clampedHAxis = Mathf.Clamp(hAxis, -0.25f, 0.25f);
-                rb.velocity = new Vector2(clampedHAxis * moveSpeed * Time.deltaTime, rb.velocity.y);
+                {
+                    rb.velocity = Vector2.Lerp(rb.velocity, new Vector2(hAxis * moveSpeed * Time.deltaTime, rb.velocity.y), 0.5f);
+                }
             }
-        }
-        animator.SetBool("isWalking", true);
+            animator.SetBool("isWalking", true);
 
 
             if (hAxis < 0)
@@ -209,7 +208,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        else 
+        else
         {
             if (!isOnWall && !wallJumped)
             {
