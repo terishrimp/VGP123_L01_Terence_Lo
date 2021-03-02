@@ -4,66 +4,97 @@ using UnityEngine;
 
 public class ParallaxBorders : MonoBehaviour
 {
-    [SerializeField] PlayerMovement player = null;
+    [Header("Background Parallax Settings")]
+    [SerializeField] SpriteRenderer backgroundToParallax;
+    [SerializeField] float parallaxXFactor = 0.5f;
+    [SerializeField] float parallaxYFactor = 0.5f;
+    [SerializeField] bool canParallax;
+
+
+    [Header("Parallax Border Settings")]
+    [SerializeField] Transform target = null;
     [SerializeField] float rightBorderBuffer = 2f;
     [SerializeField] float leftBorderBuffer = -2f;
     [SerializeField] float topBorderBuffer = 5f;
-    [SerializeField] float bottomBorderBuffer = 5f;
-    [SerializeField] bool parallaxOnXAxis = false;
-    [SerializeField] bool positiveValue = true;
+    [SerializeField] float bottomBorderBuffer = - 5f;
+
+    public bool CanParallax
+    {
+        get { return canParallax; }
+        set
+        {
+            if (value == canParallax) return;
+
+            canParallax = value;
+
+            if (canParallax)
+            {
+                ogBackgroundPos = backgroundToParallax.transform.position;
+                ogPos = transform.position;
+            }
+        }
+    }
+    Vector3 ogBackgroundPos;
+    Vector3 ogPos;
 
     public Vector3 playerPos;
     public Vector3 position;
     // Start is called before the first frame update
     void Start()
     {
-        if (player == null)
+        ogPos = transform.position;
+        ogBackgroundPos = backgroundToParallax.transform.position;
+
+        if (target == null)
         {
-            player = FindObjectOfType<PlayerMovement>();
+            target = FindObjectOfType<PlayerMovement>().gameObject.transform;
         }
-        playerPos = player.transform.position;
+        playerPos = target.transform.position;
+
+        if (rightBorderBuffer < 0) rightBorderBuffer = 0;
+        if (leftBorderBuffer > 0) leftBorderBuffer = 0;
+        if (topBorderBuffer < 0) topBorderBuffer = 0;
+        if (bottomBorderBuffer > 0) bottomBorderBuffer = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        playerPos = player.transform.position;
+
+        UpdateBorderPos();
+        UpdateParallaxBackgroundPos();
+    }
+
+    void UpdateBorderPos()
+    {
+        playerPos = target.transform.position;
         position = transform.position;
-        if (parallaxOnXAxis)
+
+        if (playerPos.x > transform.position.x + rightBorderBuffer)
         {
-            if (positiveValue)
-            {
-                if (playerPos.x >= transform.position.x)
-                {
-                    transform.position = new Vector2(transform.parent.position.x + (playerPos.x - transform.position.x), transform.parent.position.y);
-                }
-            }
-            else
-            {
-                if (playerPos.x <= transform.position.x)
-                {
-                    transform.parent.position = new Vector2(transform.parent.position.x + (playerPos.x - transform.position.x), transform.parent.position.y);
-                }
-            }
+            transform.position = new Vector2(transform.position.x + (playerPos.x - (transform.position.x + rightBorderBuffer)), transform.position.y);
         }
-        else
+        else if (playerPos.x < transform.position.x + leftBorderBuffer)
         {
-            if (positiveValue)
-            {
-                if (playerPos.y >= transform.position.y)
-                {
-                    transform.parent.position = new Vector2(transform.parent.position.x, transform.parent.position.y + (playerPos.y - transform.position.y));
-                }
-            }
-            else
-            {
-                if (playerPos.y <= transform.position.y)
-                {
-                    transform.parent.position = new Vector2(transform.parent.position.x, transform.parent.position.y + (playerPos.y - transform.position.y));
-                }
-            }
+            transform.position = new Vector2(transform.position.x + (playerPos.x - (transform.position.x + leftBorderBuffer)), transform.position.y);
+        }
+
+        if (playerPos.y > transform.position.y + topBorderBuffer)
+        {
+            transform.position = new Vector2(transform.position.x, transform.position.y + (playerPos.y - (transform.position.y + topBorderBuffer)));
+        }
+        else if (playerPos.y < transform.position.y + bottomBorderBuffer)
+        {
+            transform.position = new Vector2(transform.position.x, transform.position.y + (playerPos.y - (transform.position.y + bottomBorderBuffer)));
         }
     }
 
-    
+    void UpdateParallaxBackgroundPos()
+    {
+        if (CanParallax)
+        {
+            Vector2 parallaxDistance = new Vector2((transform.position.x - ogPos.x) * parallaxXFactor, (transform.position.y - ogPos.y) * parallaxYFactor);
+            backgroundToParallax.transform.position = new Vector2(ogBackgroundPos.x + parallaxDistance.x, ogBackgroundPos.y + parallaxDistance.y);
+        }
+    }
 }

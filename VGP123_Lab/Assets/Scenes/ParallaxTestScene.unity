@@ -352,7 +352,7 @@ GameObject:
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &218565769
 Transform:
   m_ObjectHideFlags: 0
@@ -379,13 +379,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e2ad9c4f387602439fa054ef87b6e9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1526819160}
+  backgroundToParallax: {fileID: 0}
+  parallaxXFactor: 0.5
+  parallaxYFactor: 0.5
+  canParallax: 0
+  target: {fileID: 0}
   rightBorderBuffer: 2
   leftBorderBuffer: -2
   topBorderBuffer: 5
   bottomBorderBuffer: 5
-  parallaxOnXAxis: 0
-  positiveValue: 0
   playerPos: {x: 0, y: 0, z: 0}
   position: {x: 0, y: 0, z: 0}
 --- !u!1 &347656884
@@ -573,7 +575,7 @@ GameObject:
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &470545569
 Transform:
   m_ObjectHideFlags: 0
@@ -600,13 +602,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e2ad9c4f387602439fa054ef87b6e9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1526819160}
+  backgroundToParallax: {fileID: 0}
+  parallaxXFactor: 0.5
+  parallaxYFactor: 0.5
+  canParallax: 0
+  target: {fileID: 0}
   rightBorderBuffer: 2
   leftBorderBuffer: -2
   topBorderBuffer: 5
   bottomBorderBuffer: 5
-  parallaxOnXAxis: 0
-  positiveValue: 1
   playerPos: {x: 0, y: 0, z: 0}
   position: {x: 0, y: 0, z: 0}
 --- !u!1 &506819168
@@ -887,7 +891,7 @@ GameObject:
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &757507178
 Transform:
   m_ObjectHideFlags: 0
@@ -914,13 +918,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e2ad9c4f387602439fa054ef87b6e9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1526819160}
+  backgroundToParallax: {fileID: 0}
+  parallaxXFactor: 0.5
+  parallaxYFactor: 0.5
+  canParallax: 0
+  target: {fileID: 0}
   rightBorderBuffer: 2
   leftBorderBuffer: -2
   topBorderBuffer: 5
   bottomBorderBuffer: 5
-  parallaxOnXAxis: 1
-  positiveValue: 0
   playerPos: {x: 0, y: 0, z: 0}
   position: {x: 0, y: 0, z: 0}
 --- !u!1 &908758338
@@ -1182,6 +1188,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1240390577}
   - component: {fileID: 1240390576}
+  - component: {fileID: 1240390578}
   m_Layer: 0
   m_Name: ParallaxBorders
   m_TagString: Untagged
@@ -1223,6 +1230,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1240390578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1240390575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e2ad9c4f387602439fa054ef87b6e9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundToParallax: {fileID: 0}
+  parallaxXFactor: 0.5
+  parallaxYFactor: 0.5
+  canParallax: 0
+  target: {fileID: 0}
+  rightBorderBuffer: 2
+  leftBorderBuffer: -2
+  topBorderBuffer: 5
+  bottomBorderBuffer: -5
+  playerPos: {x: 0, y: 0, z: 0}
+  position: {x: 0, y: 0, z: 0}
 --- !u!1 &1303884350
 GameObject:
   m_ObjectHideFlags: 0
@@ -1429,18 +1459,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1496970838}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1526819160 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8612842567791216567, guid: 0506e40d1232f1f40a5b624d3c8888d6,
-    type: 3}
-  m_PrefabInstance: {fileID: 1496970838}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5dbc0c1a224a0d4a943ba9c9a5564f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1563275169
 GameObject:
   m_ObjectHideFlags: 0
@@ -1779,7 +1797,7 @@ GameObject:
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1985117411
 Transform:
   m_ObjectHideFlags: 0
@@ -1806,13 +1824,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e2ad9c4f387602439fa054ef87b6e9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1526819160}
+  backgroundToParallax: {fileID: 0}
+  parallaxXFactor: 0.5
+  parallaxYFactor: 0.5
+  canParallax: 0
+  target: {fileID: 0}
   rightBorderBuffer: 2
   leftBorderBuffer: -2
   topBorderBuffer: 5
   bottomBorderBuffer: 5
-  parallaxOnXAxis: 1
-  positiveValue: 1
   playerPos: {x: 0, y: 0, z: 0}
   position: {x: 0, y: 0, z: 0}
 --- !u!1001 &5773923824632656435
