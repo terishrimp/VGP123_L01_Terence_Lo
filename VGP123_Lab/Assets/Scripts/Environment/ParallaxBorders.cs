@@ -35,7 +35,7 @@ public class ParallaxBorders : MonoBehaviour
             {
                 if (playerPos.x >= transform.position.x)
                 {
-                    transform.parent.position = new Vector2(transform.parent.position.x + (playerPos.x - transform.position.x), transform.parent.position.y);
+                    transform.position = new Vector2(transform.parent.position.x + (playerPos.x - transform.position.x), transform.parent.position.y);
                 }
             }
             else
