@@ -192,7 +192,7 @@ public class PlayerMovement : MonoBehaviour
                     rb.velocity = new Vector2(hAxis * moveSpeed * Time.deltaTime, rb.velocity.y);
                 else if (wallJumped && wallJumpTimer < wallJumpPeriod)
                 {
-                    rb.velocity = Vector2.Lerp(rb.velocity, new Vector2(hAxis * moveSpeed * Time.deltaTime, rb.velocity.y), 0.5f);
+                    rb.velocity = Vector2.Lerp(rb.velocity, new Vector2(hAxis * moveSpeed * Time.deltaTime, rb.velocity.y), 10f * Time.deltaTime);
                 }
             }
             animator.SetBool("isWalking", true);
