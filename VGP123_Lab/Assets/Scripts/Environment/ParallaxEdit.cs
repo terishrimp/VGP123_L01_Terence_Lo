@@ -7,13 +7,30 @@ using UnityEngine;
 public class ParallaxEdit : MonoBehaviour
 {
     [SerializeField] ParallaxBorders parallaxManager = null;
-    [SerializeField] bool shiftBackgrounds = false;
+
+    [Header ("Settings for On Enter")]
+    [SerializeField] bool shiftBackgroundsOnEnter = false;
     [Tooltip("Only necessary if you want to shift backgrounds is set to true")]
-    [SerializeField] GameObject newBackground = null;
-    [SerializeField] bool disableParallax = false;
-    [SerializeField] bool overrideBorderValues = false;
+    [SerializeField] GameObject newBackgroundOnEnter = null;
+    [SerializeField] bool disableParallaxOnEnter = false;
+    [SerializeField] bool overrideBorderValuesOnEnter = false;
     [Tooltip("right, left, top, bottom")]
-    [SerializeField] Vector4 newBorderValues = new Vector4(1, 1, 1, 1);
+    [SerializeField] Vector4 newBorderValuesOnEnter = new Vector4(1, 1, 1, 1);
+    [SerializeField] bool changeParallaxFactorOnEnter = false;
+    [Tooltip("x, y")]
+    [SerializeField] Vector2 parallaxFactorOverrideOnEnter = new Vector2(0.5f, 0.5f);
+
+    [Header("Settings for On Exit")]
+    [SerializeField] bool shiftBackgroundsOnExit = false;
+    [Tooltip("Only necessary if you want to shift backgrounds is set to true")]
+    [SerializeField] GameObject newBackgroundOnExit = null;
+    [SerializeField] bool disableParallaxOnExit = false;
+    [SerializeField] bool overrideBorderValuesOnExit= false;
+    [Tooltip("right, left, top, bottom")]
+    [SerializeField] Vector4 newBorderValuesOnExit = new Vector4(1, 1, 1, 1);
+    [SerializeField] bool changeParallaxFactorOnExit = false;
+    [Tooltip("x, y")]
+    [SerializeField] Vector2 parallaxFactorOverrideOnExit = new Vector2(0.5f, 0.5f);
     // Start is called before the first frame update
     void Start()
     {
@@ -27,12 +44,41 @@ public class ParallaxEdit : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            if (disableParallax) parallaxManager.CanParallax = false;
-            else if (!disableParallax) parallaxManager.CanParallax = true;
+            if (disableParallaxOnEnter) parallaxManager.CanParallax = false;
+            else if (!disableParallaxOnEnter) parallaxManager.CanParallax = true;
 
-            if (shiftBackgrounds) parallaxManager.SetBackgroundToParallax(newBackground);
+            if (shiftBackgroundsOnEnter) parallaxManager.SetBackgroundToParallax(newBackgroundOnEnter);
 
-            if (overrideBorderValues) parallaxManager.SetNewBorderValues(newBorderValues.x, newBorderValues.y, newBorderValues.z, newBorderValues.w);
+            if (overrideBorderValuesOnEnter) parallaxManager.SetNewBorderValues(newBorderValuesOnEnter.x, newBorderValuesOnEnter.y, newBorderValuesOnEnter.z, newBorderValuesOnEnter.w);
+
+            if (changeParallaxFactorOnEnter)
+            {
+                parallaxManager.ParallaxXFactor = parallaxFactorOverrideOnEnter.x;
+                parallaxManager.ParallaxYFactor = parallaxFactorOverrideOnEnter.y;
+            }
+
+            parallaxManager.OgPos = parallaxManager.transform.position;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            if (disableParallaxOnExit) parallaxManager.CanParallax = false;
+            else if (!disableParallaxOnExit) parallaxManager.CanParallax = true;
+
+            if (shiftBackgroundsOnExit) parallaxManager.SetBackgroundToParallax(newBackgroundOnExit);
+
+            if (overrideBorderValuesOnExit) parallaxManager.SetNewBorderValues(newBorderValuesOnExit.x, newBorderValuesOnExit.y, newBorderValuesOnExit.z, newBorderValuesOnExit.w);
+
+            if (changeParallaxFactorOnExit)
+            {
+                parallaxManager.ParallaxXFactor = parallaxFactorOverrideOnExit.x;
+                parallaxManager.ParallaxYFactor = parallaxFactorOverrideOnExit.y;
+            }
+
+            parallaxManager.OgPos = parallaxManager.transform.position;
         }
     }
 }

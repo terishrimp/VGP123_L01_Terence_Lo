@@ -18,6 +18,10 @@ public class ParallaxBorders : MonoBehaviour
     [SerializeField] float topBorderBuffer = 5f;
     [SerializeField] float bottomBorderBuffer = -5f;
 
+    Vector3 ogBackgroundPos;
+    Vector3 ogPos;
+    Vector3 targetPos;
+
     public float RightBorderBuffer
     {
         get { return rightBorderBuffer; }
@@ -69,22 +73,43 @@ public class ParallaxBorders : MonoBehaviour
             if (value == canParallax) return;
             canParallax = value;
 
-            if (canParallax)
-            {
-                ogBackgroundPos = backgroundToParallax.transform.position;
-                ogPos = transform.position;
-            }
+            ogPos = transform.position;
+            ogBackgroundPos = backgroundToParallax.transform.position;
+
+        }
+    }
+    public Vector3 OgPos
+    {
+        get { return ogPos; }
+        set
+        {
+            ogPos = value;
+        }
+    }
+    public float ParallaxXFactor
+    {
+        get { return parallaxXFactor; }
+        set
+        {
+            if (value == parallaxXFactor) return;
+            if (value < 0) parallaxXFactor = 0;
+            else parallaxXFactor = value;
         }
     }
 
-    Vector3 ogBackgroundPos;
-    Vector3 ogPos;
-    Vector3 targetPos;
+    public float ParallaxYFactor
+    {
+        get { return parallaxYFactor; }
+        set
+        {
+            if (value == parallaxYFactor) return;
+            if (value < 0) parallaxYFactor = 0;
+            else parallaxYFactor = value;
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
-        ogPos = transform.position;
-        ogBackgroundPos = backgroundToParallax.transform.position;
 
         if (target == null)
         {
@@ -97,12 +122,13 @@ public class ParallaxBorders : MonoBehaviour
         if (bottomBorderBuffer > 0) bottomBorderBuffer = 0;
 
         transform.position = targetPos;
+        ogPos = transform.position;
+        ogBackgroundPos = backgroundToParallax.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-
         UpdateBorderPos();
         UpdateParallaxBackgroundPos();
     }
@@ -142,13 +168,18 @@ public class ParallaxBorders : MonoBehaviour
     public void SetBackgroundToParallax(GameObject backgroundToParallax)
     {
         this.backgroundToParallax = backgroundToParallax;
+        ogBackgroundPos = backgroundToParallax.transform.position;
     }
-
     public void SetNewBorderValues(float right, float left, float top, float bottom)
     {
         RightBorderBuffer = right;
         LeftBorderBuffer = left;
         TopBorderBuffer = top;
         BottomBorderBuffer = bottom;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawLine(ogPos, transform.position);
     }
 }
