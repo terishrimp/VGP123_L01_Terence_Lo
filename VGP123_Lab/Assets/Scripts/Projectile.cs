@@ -15,7 +15,7 @@ public class Projectile : MonoBehaviour
     private bool movingRight = false;
     Vector3 ogScale;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         ogScale = transform.localScale;
         rb = GetComponent<Rigidbody2D>();

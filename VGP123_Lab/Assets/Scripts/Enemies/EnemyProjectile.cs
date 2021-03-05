@@ -6,7 +6,10 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class EnemyProjectile : Projectile
 {
-
+    private void Start()
+    {
+        gameObject.tag = "enemyProjectile";
+    }
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         int maskCheck = 1 << collision.gameObject.layer & layerMasksToIgnore.value;

@@ -8,6 +8,8 @@ TagManager:
   - pickup
   - collectableList
   - enemyList
+  - enemyProjectile
+  - playerProjectile
   layers:
   - Default
   - TransparentFX

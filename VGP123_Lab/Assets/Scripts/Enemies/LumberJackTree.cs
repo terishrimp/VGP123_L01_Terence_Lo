@@ -71,8 +71,6 @@ public class LumberJackTree : MonoBehaviour
                 {
                     var ogLogPos = logList[i].OgPos;
                     var shootPos = ogLogPos + new Vector3(0f, yShiftFromSpawn, 0f);
-                    Debug.Log(ogLogPos);
-                    Debug.Log(shootPos);
                     logList[i].transform.position = Vector3.MoveTowards(logList[i].transform.position, shootPos, spawnMoveSpeed * Time.deltaTime);
                     if (logList[i].transform.position == shootPos)
                     {

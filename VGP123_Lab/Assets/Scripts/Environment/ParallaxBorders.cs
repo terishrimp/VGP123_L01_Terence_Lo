@@ -135,24 +135,27 @@ public class ParallaxBorders : MonoBehaviour
 
     void UpdateBorderPos()
     {
-        targetPos = target.transform.position;
+        if (target != null)
+        {
+            targetPos = target.transform.position;
 
-        if (targetPos.x > transform.position.x + RightBorderBuffer)
-        {
-            transform.position = new Vector2(transform.position.x + (targetPos.x - (transform.position.x + RightBorderBuffer)), transform.position.y);
-        }
-        else if (targetPos.x < transform.position.x + LeftBorderBuffer)
-        {
-            transform.position = new Vector2(transform.position.x + (targetPos.x - (transform.position.x + LeftBorderBuffer)), transform.position.y);
-        }
+            if (targetPos.x > transform.position.x + RightBorderBuffer)
+            {
+                transform.position = new Vector2(transform.position.x + (targetPos.x - (transform.position.x + RightBorderBuffer)), transform.position.y);
+            }
+            else if (targetPos.x < transform.position.x + LeftBorderBuffer)
+            {
+                transform.position = new Vector2(transform.position.x + (targetPos.x - (transform.position.x + LeftBorderBuffer)), transform.position.y);
+            }
 
-        if (targetPos.y > transform.position.y + TopBorderBuffer)
-        {
-            transform.position = new Vector2(transform.position.x, transform.position.y + (targetPos.y - (transform.position.y + TopBorderBuffer)));
-        }
-        else if (targetPos.y < transform.position.y + BottomBorderBuffer)
-        {
-            transform.position = new Vector2(transform.position.x, transform.position.y + (targetPos.y - (transform.position.y + BottomBorderBuffer)));
+            if (targetPos.y > transform.position.y + TopBorderBuffer)
+            {
+                transform.position = new Vector2(transform.position.x, transform.position.y + (targetPos.y - (transform.position.y + TopBorderBuffer)));
+            }
+            else if (targetPos.y < transform.position.y + BottomBorderBuffer)
+            {
+                transform.position = new Vector2(transform.position.x, transform.position.y + (targetPos.y - (transform.position.y + BottomBorderBuffer)));
+            }
         }
     }
 
