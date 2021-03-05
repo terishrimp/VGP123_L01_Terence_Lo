@@ -11,6 +11,8 @@ public class LumberJackTree : MonoBehaviour
     [SerializeField] float spawnPeriod = 1f;
     List<LumberJackLog> logList = new List<LumberJackLog>();
 
+
+    bool isLoaded = false;
     float spawnTimer = 0;
 
     public List<LumberJackLog> LogList

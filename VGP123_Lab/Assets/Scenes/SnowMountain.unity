@@ -4480,7 +4480,7 @@ GameObject:
   - component: {fileID: 970198649}
   - component: {fileID: 970198648}
   m_Layer: 0
-  m_Name: megaman-Lifebar
+  m_Name: Lifebar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
