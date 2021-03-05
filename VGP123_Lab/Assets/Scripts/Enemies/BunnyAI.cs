@@ -34,6 +34,14 @@ public class BunnyAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameObject enemyListGo = GameObject.FindGameObjectWithTag("enemyList");
+        if (enemyListGo == null)
+        {
+            enemyListGo = Instantiate(new GameObject("Enemy List"), new Vector3(0, 0, 0), Quaternion.identity);
+            enemyListGo.tag = "enemyList";
+        }
+
+        transform.parent = enemyListGo.transform;
         idleTimer = idlePeriod;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
