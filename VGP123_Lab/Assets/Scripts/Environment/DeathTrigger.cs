@@ -17,7 +17,7 @@ public class DeathTrigger : MonoBehaviour
     {
         if (sceneLoader != null && collision.CompareTag("Player"))
         {
-            sceneLoader.ResetCurrentScene();
+            SceneLoader.ResetCurrentScene();
         }
     }
 }

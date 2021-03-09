@@ -9,8 +9,8 @@ public class PlayerCollision : MonoBehaviour
         if (collision.CompareTag("enemyProjectile"))
         {
             var cEnemyProjectile = collision.GetComponent<EnemyProjectile>();
-            SceneLoader.cSceneLoader.Health -= cEnemyProjectile.GetDamage();
-            if(SceneLoader.cSceneLoader.Health < 0) { Destroy (gameObject);}
+            SceneLoader.Health -= cEnemyProjectile.GetDamage();
+            if(SceneLoader.Health < 0) { Destroy (gameObject);}
         }
     }
 }

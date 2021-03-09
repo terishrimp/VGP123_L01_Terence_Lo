@@ -9,7 +9,7 @@ public class LumberJackTree : MonoBehaviour
     [SerializeField] float yShiftFromSpawn = 1f;
     [SerializeField] float spawnMoveSpeed = 50f;
     [SerializeField] float spawnPeriod = 1f;
-    List<LumberJackLog> logList = new List<LumberJackLog>();
+    readonly List<LumberJackLog> logList = new List<LumberJackLog>();
 
 
     bool isLoaded = false;
@@ -39,10 +39,6 @@ public class LumberJackTree : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1) && logList.Count > 0)
-        {
-            DebugShootLog();
-        }
         if (spawnTimer <= spawnPeriod) spawnTimer += Time.deltaTime;
         if (logList.Count < maxLogCount && spawnTimer >= spawnPeriod)
         {
