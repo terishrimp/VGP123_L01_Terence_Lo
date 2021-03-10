@@ -715,9 +715,9 @@ TextureImporter:
       name: LumberJackIdle1
       rect:
         serializedVersion: 2
-        x: 200
+        x: 189
         y: 1144
-        width: 39
+        width: 50
         height: 40
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -736,9 +736,9 @@ TextureImporter:
       name: LumberJackIdle2
       rect:
         serializedVersion: 2
-        x: 250
+        x: 239
         y: 1145
-        width: 39
+        width: 50
         height: 39
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -757,9 +757,9 @@ TextureImporter:
       name: LumberJackIdle3
       rect:
         serializedVersion: 2
-        x: 300
+        x: 289
         y: 1145
-        width: 39
+        width: 50
         height: 38
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -778,9 +778,9 @@ TextureImporter:
       name: LumberJackAttack1
       rect:
         serializedVersion: 2
-        x: 5
+        x: 0
         y: 1094
-        width: 29
+        width: 34
         height: 40
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -801,7 +801,7 @@ TextureImporter:
         serializedVersion: 2
         x: 58
         y: 1094
-        width: 23
+        width: 32
         height: 40
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -822,7 +822,7 @@ TextureImporter:
         serializedVersion: 2
         x: 105
         y: 1094
-        width: 29
+        width: 42
         height: 40
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -843,7 +843,7 @@ TextureImporter:
         serializedVersion: 2
         x: 153
         y: 1094
-        width: 33
+        width: 46
         height: 40
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -862,9 +862,9 @@ TextureImporter:
       name: LumberJackAttack5
       rect:
         serializedVersion: 2
-        x: 210
+        x: 208
         y: 1094
-        width: 20
+        width: 22
         height: 40
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -883,9 +883,9 @@ TextureImporter:
       name: LumberJackAttack6
       rect:
         serializedVersion: 2
-        x: 254
+        x: 244
         y: 1094
-        width: 32
+        width: 42
         height: 40
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -904,12 +904,12 @@ TextureImporter:
       name: LumberJackAttack7
       rect:
         serializedVersion: 2
-        x: 298
+        x: 297
         y: 1094
-        width: 43
+        width: 44
         height: 40
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.265, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

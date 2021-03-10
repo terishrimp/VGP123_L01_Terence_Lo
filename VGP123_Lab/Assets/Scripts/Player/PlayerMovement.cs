@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float wallCheckLength = 1f;
     [SerializeField] float fallSpeedMax = -2f;
     [SerializeField] float wallJumpPeriod = .1f;
+
     Rigidbody2D rb;
     Vector3 ogScale;
     float ogMoveSpeed;
@@ -31,9 +32,29 @@ public class PlayerMovement : MonoBehaviour
     float wallJumpTimer;
     bool isGrounded = true;
     bool isOnWall = false;
+    public bool IsOnWall
+    {
+        get { return isOnWall; }
+        set
+        {
+            if (value == isOnWall) return;
+            if (value) { 
+                // reduce y-velocity to zero on wall impact
+                rb.velocity = new Vector2(rb.velocity.x, 0f);
+
+                animator.SetTrigger("justHitWall");
+            }
+            isOnWall = value;
+        }
+    }
     bool isJumping = false;
+    bool isWalking = false;
     public bool wallJumped = false;
-    bool prevIsOnWall = false;
+    const string animWalkingString = "isWalking";
+    const string animGroundedString = "isGrounded";
+    const string animJumpingString = "isJumping";
+    const string animOnWallString = "isOnWall";
+    const string animYVelocityString = "yVelocity";
     // Start is called before the first frame update
     void Start()
     {
@@ -49,16 +70,10 @@ public class PlayerMovement : MonoBehaviour
     {
         float hAxis = Input.GetAxisRaw("Horizontal");
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, GroundLayer);
-        isOnWall = Physics2D.OverlapBox(wallCheck.position, new Vector2(wallCheckWidth, wallCheckLength), 0, GroundLayer);
+        IsOnWall = Physics2D.OverlapBox(wallCheck.position, new Vector2(wallCheckWidth, wallCheckLength), 0, GroundLayer);
 
-        if (isOnWall)
+        if (IsOnWall)
         {
-            if (!prevIsOnWall)
-            {
-                // reduce y-velocity to zero on wall impact
-                rb.velocity = new Vector2(rb.velocity.x, 0f);
-                animator.SetTrigger("justHitWall");
-            }
             if (!isGrounded)
             {
                 //clamp fall speed
@@ -87,20 +102,8 @@ public class PlayerMovement : MonoBehaviour
                     rb.AddForce(new Vector3(0, jumpForce / 3), ForceMode2D.Impulse);
                 }
             }
-
-            ////stop the player from trying to walk into the wall if they're not stationary
-            //if (Mathf.Sign(transform.localScale.x) == -1 && Mathf.Sign(hAxis) == -1 && !isJumping)
-            //{
-            //    rb.velocity = new Vector2(0, rb.velocity.y);
-            //    animator.SetBool("isWalking", false);
-            //}
-            //else if (Mathf.Sign(transform.localScale.x) == 1 && Mathf.Sign(hAxis) == 1 && !isJumping)
-            //{
-            //    rb.velocity = new Vector2(0, rb.velocity.y);
-            //    animator.SetBool("isWalking", false);
-            //}
         }
-        else if (!isOnWall)
+        else if (!IsOnWall)
         {
             if (isGrounded)
             {
@@ -118,7 +121,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
-        if (isGrounded || isOnWall)
+        if (isGrounded || IsOnWall)
         {
             isJumping = false;
             jumpTimer = 0f;
@@ -136,11 +139,12 @@ public class PlayerMovement : MonoBehaviour
         CheckJump();
         CheckHorizontalAxis(hAxis);
 
-        animator.SetBool("isOnWall", isOnWall);
-        animator.SetBool("isJumping", isJumping);
-        animator.SetBool("isGrounded", isGrounded);
-        animator.SetFloat("yVelocity", rb.velocity.y);
-        prevIsOnWall = isOnWall;
+        animator.SetBool(animOnWallString, IsOnWall);
+        animator.SetBool(animJumpingString, isJumping);
+        animator.SetBool(animGroundedString, isGrounded);
+        animator.SetBool(animWalkingString, isWalking);
+        animator.SetFloat(animYVelocityString, rb.velocity.y);
+
     }
 
     void CheckJump()
@@ -157,16 +161,6 @@ public class PlayerMovement : MonoBehaviour
                     rb.AddForce(new Vector3(0, jumpForce * Time.deltaTime), ForceMode2D.Impulse);
                 }
             }
-            else if (!isGrounded && wallJumped)
-            {
-
-                //wallJumpTimer += Time.deltaTime;
-                //if (wallJumpTimer < wallJumpPeriod)
-                //{
-                //    rb.AddForce(new Vector2(jumpForce * transform.localScale.x * -1 * Time.deltaTime, jumpForce * Time.deltaTime), ForceMode2D.Impulse);
-                //}
-            }
-
         }
 
         if (Input.GetButtonUp("Jump"))
@@ -186,7 +180,7 @@ public class PlayerMovement : MonoBehaviour
         if (hAxis != 0)
         {
             moveSpeed = ogMoveSpeed;
-            if (!isOnWall)
+            if (!IsOnWall)
             {
                 if (!wallJumped)
                     rb.velocity = new Vector2(hAxis * moveSpeed * Time.deltaTime, rb.velocity.y);
@@ -195,7 +189,7 @@ public class PlayerMovement : MonoBehaviour
                     rb.velocity = Vector2.Lerp(rb.velocity, new Vector2(hAxis * moveSpeed * Time.deltaTime, rb.velocity.y), 10f * Time.deltaTime);
                 }
             }
-            animator.SetBool("isWalking", true);
+            isWalking = true;
 
 
             if (hAxis < 0)
@@ -207,14 +201,13 @@ public class PlayerMovement : MonoBehaviour
                 transform.localScale = ogScale;
             }
         }
-
         else
         {
-            if (!isOnWall && !wallJumped)
+            if (!IsOnWall && !wallJumped)
             {
                 rb.velocity = new Vector2(0, rb.velocity.y);
             }
-            animator.SetBool("isWalking", false);
+            isWalking = false;
         }
 
     }

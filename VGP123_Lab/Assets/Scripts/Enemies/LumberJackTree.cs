@@ -12,7 +12,11 @@ public class LumberJackTree : MonoBehaviour
     List<LumberJackLog> logList = new List<LumberJackLog>();
 
 
-    bool isLoaded = false;
+    bool hasLogs = false;
+    public bool HasLogs
+    {
+        get { return hasLogs; }
+    }
     float spawnTimer = 0;
 
     public List<LumberJackLog> LogList
@@ -39,9 +43,9 @@ public class LumberJackTree : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1) && logList.Count > 0)
+        if (Input.GetKeyDown(KeyCode.F1))
         {
-            DebugShootLog();
+            ShootLog();
         }
         if (spawnTimer <= spawnPeriod) spawnTimer += Time.deltaTime;
         if (logList.Count < maxLogCount && spawnTimer >= spawnPeriod)
@@ -65,7 +69,7 @@ public class LumberJackTree : MonoBehaviour
 
             }
         }
-        if (logList.Count != 0)
+        if (logList.Count > 0)
         {
             for (int i = 0; i < logList.Count; i++)
             {
@@ -82,10 +86,13 @@ public class LumberJackTree : MonoBehaviour
                     }
                 }
             }
+            if(logList[0].CanBeShot == true)
+            hasLogs = true;
         }
+        else if (logList.Count <=0) hasLogs = false;
     }
 
-    public void DebugShootLog()
+    public void ShootLog()
     {
         spawnTimer = 0;
         if (logList[0].CanBeShot) { 

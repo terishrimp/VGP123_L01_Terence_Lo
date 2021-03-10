@@ -1,36 +1,52 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
+    public delegate void EventHandler<TEventArgs>(object sender, TEventArgs e);
+    public event EventHandler<int> HealthChange;
+    public event EventHandler<int> ScreenChange;
 
-    [SerializeField] int maxHealth = 3;
-    int health;
+    [SerializeField] int minHealth = 16;
+    public int MinHealth
+    {
+        get { return minHealth; }
+    }
+
+    [SerializeField] int maxHealth = 16;
+    public int MaxHealth
+    {
+        get { return maxHealth; }
+    }
+
+    int health = 16;
     public int Health
     {
         get { return health; }
         set
         {
             if (value == health) return;
-            if (value < 0)
-            {
-                Lives--;
-            }
-            if (value > maxHealth)
+            if (value <= 0 || value > maxHealth)
             {
                 health = maxHealth;
+                if (value <= 0)
+                {
+                    Lives--;
+                }
             }
             else
             {
-                Debug.Log(health);
                 health = value;
             }
+            instance.HealthChange?.Invoke(instance.HealthChange, value);
         }
     }
+
+
     [SerializeField] int maxLives = 3;
-    public static int lives = 3;
+
+    int lives = 3;
     public int Lives
     {
         get { return lives; }
@@ -45,12 +61,12 @@ public class SceneLoader : MonoBehaviour
             else if (value < 0)
             {
                 lives = maxLives;
-                NextScene();
+                instance.NextScene();
             }
             else if (value < lives)
             {
                 lives = value;
-                ResetCurrentScene();
+                instance.ResetCurrentScene();
             }
             else
             {
@@ -61,21 +77,33 @@ public class SceneLoader : MonoBehaviour
         }
     }
 
-    public static SceneLoader cSceneLoader;
+    public static SceneLoader instance;
+
+    Vector2 lastScreenSize = new Vector2(0, 0);
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         SceneLoader[] instances = FindObjectsOfType<SceneLoader>();
         if (instances.Length > 1) Destroy(gameObject);
         else DontDestroyOnLoad(gameObject);
-        cSceneLoader = this;
-        health = maxHealth;
+        instance = this;
+        Health = MaxHealth;
         Application.targetFrameRate = 120;
     }
 
 
     private void Update()
     {
+        if (lastScreenSize != new Vector2(Screen.width, Screen.height))
+        {
+            lastScreenSize = new Vector2(Screen.width, Screen.height);
+            instance.ScreenChange?.Invoke(instance.ScreenChange, health);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            Health--;
+        }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             NextScene();

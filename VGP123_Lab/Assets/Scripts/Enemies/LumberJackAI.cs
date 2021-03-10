@@ -9,8 +9,10 @@ public class LumberJackAI : MonoBehaviour
 
     [SerializeField] LumberJackTree tree;
 
-    bool isPlayerInRange;
+    bool isPlayerInRange = false;
+    bool canBreakLog = false;
     Animator animator;
+    const string animBreakLogString = "canBreakLog";
     public bool IsPlayerInRange
     {
         get { return isPlayerInRange; }
@@ -18,6 +20,7 @@ public class LumberJackAI : MonoBehaviour
         {
             if (value == isPlayerInRange) return;
             isPlayerInRange = value;
+            Debug.Log(value);
         }
     }
     // Start is called before the first frame update
@@ -35,24 +38,32 @@ public class LumberJackAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Collider2D[] goInRangeList= Physics2D.OverlapCircleAll(playerInRangeCheckPos.position, playerInRangeCheckRadius);
-        foreach(var go in goInRangeList)
+        Collider2D[] goInRangeList = Physics2D.OverlapCircleAll(playerInRangeCheckPos.position, playerInRangeCheckRadius);
+        IsPlayerInRange = false;
+        foreach (var go in goInRangeList)
         {
-            isPlayerInRange = false;
             if (go.CompareTag("Player"))
             {
-                isPlayerInRange = true;
+                IsPlayerInRange = true;
                 break;
             }
         }
-        if (isPlayerInRange)
-        {
-            //set animation bool to true
-        }
-        else
-        {
-            //set animation bool to false
-        }
+        if (IsPlayerInRange && tree.HasLogs) canBreakLog = true;
+        else canBreakLog = false;
+
+        animator.SetBool(animBreakLogString, canBreakLog);
+
+
+    }
+#pragma warning disable IDE0051 // Remove unused private members
+    void BreakLog()
+#pragma warning restore IDE0051 // Remove unused private members
+    {
+        tree.ShootLog();
     }
 
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(playerInRangeCheckPos.position, playerInRangeCheckRadius);
+    }
 }
