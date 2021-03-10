@@ -5,47 +5,49 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
     public delegate void EventHandler<TEventArgs>(object sender, TEventArgs e);
-    public static event EventHandler<int> HealthChange;
+    public event EventHandler<int> HealthChange;
+    public event EventHandler<int> ScreenChange;
 
-    static int minHealth = 16;
-
-    public static int MinHealth
+    [SerializeField] int minHealth = 16;
+    public int MinHealth
     {
         get { return minHealth; }
     }
-    static int maxHealth = 16;
-    public static int MaxHealth
+
+    [SerializeField] int maxHealth = 16;
+    public int MaxHealth
     {
         get { return maxHealth; }
     }
 
-    static int health;
-    public static int Health
+    int health = 16;
+    public int Health
     {
         get { return health; }
         set
         {
             if (value == health) return;
-            if (value < 0)
-            {
-                Lives--;
-            }
-            if (value > maxHealth)
+            if (value <= 0 || value > maxHealth)
             {
                 health = maxHealth;
+                if (value <= 0)
+                {
+                    Lives--;
+                }
             }
             else
             {
-                Debug.Log(health);
                 health = value;
             }
-            HealthChange?.Invoke(SceneLoader.HealthChange, value);
+            instance.HealthChange?.Invoke(instance.HealthChange, value);
         }
     }
 
-    static int maxLives = 3;
-    static int lives = 3;
-    public static int Lives
+
+    [SerializeField] int maxLives = 3;
+
+    int lives = 3;
+    public int Lives
     {
         get { return lives; }
         set
@@ -59,12 +61,12 @@ public class SceneLoader : MonoBehaviour
             else if (value < 0)
             {
                 lives = maxLives;
-                NextScene();
+                instance.NextScene();
             }
             else if (value < lives)
             {
                 lives = value;
-                ResetCurrentScene();
+                instance.ResetCurrentScene();
             }
             else
             {
@@ -75,21 +77,29 @@ public class SceneLoader : MonoBehaviour
         }
     }
 
-    public static SceneLoader cSceneLoader;
+    public static SceneLoader instance;
+
+    Vector2 lastScreenSize = new Vector2(0, 0);
     // Start is called before the first frame update
     void Awake()
     {
         SceneLoader[] instances = FindObjectsOfType<SceneLoader>();
         if (instances.Length > 1) Destroy(gameObject);
         else DontDestroyOnLoad(gameObject);
-        cSceneLoader = this;
-        health = maxHealth;
+        instance = this;
+        Health = MaxHealth;
         Application.targetFrameRate = 120;
     }
 
 
     private void Update()
     {
+        if(lastScreenSize != new Vector2(Screen.width, Screen.height))
+        {
+            lastScreenSize = new Vector2(Screen.width, Screen.height);
+            instance.ScreenChange?.Invoke(instance.ScreenChange, health);
+        }
+
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             Health--;
@@ -108,12 +118,12 @@ public class SceneLoader : MonoBehaviour
         }
 
     }
-    public static void ResetCurrentScene()
+    public void ResetCurrentScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public static void NextScene()
+    public void NextScene()
     {
         if (SceneManager.GetActiveScene().buildIndex == SceneManager.sceneCountInBuildSettings - 1) SceneManager.LoadScene(0);
         else SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
