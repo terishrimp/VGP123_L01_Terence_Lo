@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6930964929383597148}
   m_Layer: 10
   m_Name: BunnyProjectile
-  m_TagString: Untagged
+  m_TagString: enemyProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

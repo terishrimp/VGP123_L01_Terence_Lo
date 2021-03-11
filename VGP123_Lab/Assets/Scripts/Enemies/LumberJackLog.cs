@@ -2,14 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(Collider2D))]
+
 public class LumberJackLog : EnemyProjectile
 {
-
     bool canBeShot = false;
-    bool isShot = false;
-    Vector3 ogPos;
     public bool CanBeShot
     {
         get { return canBeShot; }
@@ -19,6 +15,8 @@ public class LumberJackLog : EnemyProjectile
             canBeShot = value;
         }
     }
+
+    bool isShot = false;
     public bool IsShot
     {
         get { return isShot; }
@@ -32,24 +30,21 @@ public class LumberJackLog : EnemyProjectile
             }
         }
     }
-    public Rigidbody2D Rb
-    {
-        get { return rb; }
-    }
+
+    Vector3 ogPos;
+
     public Vector3 OgPos
     {
         get { return ogPos; }
     }
     protected override void Awake()
     {
-        ogScale = transform.localScale;
-        rb = GetComponent<Rigidbody2D>();
-
         if (projectileSpeed < 0)
         {
             projectileSpeed *= -1;
         }
         ogPos = transform.position;
+
         rb = GetComponent<Rigidbody2D>();
         rb.isKinematic = true;
     }
@@ -75,5 +70,25 @@ public class LumberJackLog : EnemyProjectile
         }
 
     }
+    protected override void OnTriggerEnter2D(Collider2D collision)
+    {
+        int maskCheck = 1 << collision.gameObject.layer & layerMasksToIgnore.value;
+        if (maskCheck == 0)
+        {
+            if (collision.GetComponent<PlayerCollision>() != null)
+            {
+                var player = collision.GetComponent<PlayerCollision>();
+                if (!player.IsHit && IsShot)
+                {
+                    SceneLoader.instance.Health -= damage;
+                    Destroy(gameObject);
+                }
+            }
+        }
+    }
 
+    public override int GetDamage()
+    {
+        return base.GetDamage();
+    }
 }

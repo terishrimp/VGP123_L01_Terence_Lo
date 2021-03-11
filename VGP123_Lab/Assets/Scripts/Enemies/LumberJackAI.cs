@@ -58,7 +58,7 @@ public class LumberJackAI : MonoBehaviour
     void BreakLog()
 #pragma warning restore IDE0051 // Remove unused private members
     {
-        tree.ShootLog();
+        tree.ShootLog(tree.LogList.Count-1);
     }
 
     private void OnDrawGizmosSelected()

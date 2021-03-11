@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4855189542116821365}
   - component: {fileID: 4855189542116821364}
   m_Layer: 0
-  m_Name: LumberJackLog
+  m_Name: LumberJackTree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,4 +47,4 @@ MonoBehaviour:
   maxLogCount: 2
   yShiftFromSpawn: 0.5
   spawnMoveSpeed: 2
-  spawnPeriod: 1
+  spawnPeriod: 1.25

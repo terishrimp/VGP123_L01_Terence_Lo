@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(Collider2D))]
 public class EnemyProjectile : Projectile
 {
     protected override void Awake()
@@ -23,8 +21,16 @@ public class EnemyProjectile : Projectile
             if (collision.GetComponent<PlayerCollision>() != null)
             {
                 var player = collision.GetComponent<PlayerCollision>();
-                if (!player.IsHit) Destroy(gameObject);
+                if (!player.IsHit) {
+                    SceneLoader.instance.Health -= damage;
+                    Destroy(gameObject); 
+                }
             }
         }
+    }
+
+    public override int GetDamage()
+    {
+        return base.GetDamage();
     }
 }

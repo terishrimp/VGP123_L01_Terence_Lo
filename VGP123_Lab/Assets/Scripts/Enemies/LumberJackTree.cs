@@ -17,7 +17,7 @@ public class LumberJackTree : MonoBehaviour
     {
         get { return hasLogs; }
     }
-    float spawnTimer = 0;
+    float spawnTimer;
 
     public List<LumberJackLog> LogList
     {
@@ -34,19 +34,15 @@ public class LumberJackTree : MonoBehaviour
         }
         transform.parent = enemyListGo.transform;
 
-        if (yShiftFromSpawn < 0)
-        {
-            yShiftFromSpawn = 0;
-        }
+        if (yShiftFromSpawn < 0) yShiftFromSpawn = 0;
+        if (spawnPeriod < 0) spawnPeriod = 0;
+        spawnTimer = spawnPeriod;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F1))
-        {
-            ShootLog();
-        }
+
         if (spawnTimer <= spawnPeriod) spawnTimer += Time.deltaTime;
         if (logList.Count < maxLogCount && spawnTimer >= spawnPeriod)
         {
@@ -55,19 +51,15 @@ public class LumberJackTree : MonoBehaviour
                 var cLog = Instantiate(log.gameObject, transform.position, Quaternion.identity);
                 logList.Add(cLog.GetComponent<LumberJackLog>());
                 cLog.transform.parent = transform;
-                
             }
-            else
+            else if (logList[logList.Count - 1].CanBeShot)
             {
-                if (logList[logList.Count - 1].CanBeShot)
-                {
-                    var cLog = Instantiate(log.gameObject, logList[logList.Count - 1].transform.position, Quaternion.identity);
-                    logList.Add(cLog.GetComponent<LumberJackLog>());
-                    cLog.transform.parent = transform;
-                    
-                }
-
+                var cLog = Instantiate(log.gameObject, transform.position, Quaternion.identity);
+                logList.Add(cLog.GetComponent<LumberJackLog>());
+                cLog.transform.parent = transform;
             }
+
+            spawnTimer = 0;
         }
         if (logList.Count > 0)
         {
@@ -80,30 +72,24 @@ public class LumberJackTree : MonoBehaviour
                     logList[i].transform.position = Vector3.MoveTowards(logList[i].transform.position, shootPos, spawnMoveSpeed * Time.deltaTime);
                     if (logList[i].transform.position == shootPos)
                     {
-                        logList[i].Rb.simulated = true;
                         logList[i].Rb.isKinematic = false;
                         logList[i].CanBeShot = true;
                     }
                 }
             }
-            if(logList[0].CanBeShot == true)
-            hasLogs = true;
+            if (logList[0].CanBeShot == true)
+                hasLogs = true;
         }
-        else if (logList.Count <=0) hasLogs = false;
+        else if (logList.Count <= 0) hasLogs = false;
     }
 
-    public void ShootLog()
+    public void ShootLog(int index)
     {
         spawnTimer = 0;
-        if (logList[0].CanBeShot) { 
-        logList[0].IsShot = true;
-        logList.RemoveAt(0);
+        if (logList[index].CanBeShot)
+        {
+            logList[index].IsShot = true;
+            logList.RemoveAt(index);
         }
-
-        //var culledList = logList.FindAll(s => s.gameObject != null);
-        //for (int i = 0; i < culledList.Count; i++)
-        //{
-        //    culledList[i].Rb.isKinematic = false;
-        //}
     }
 }

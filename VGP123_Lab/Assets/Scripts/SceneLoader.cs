@@ -32,7 +32,7 @@ public class SceneLoader : MonoBehaviour
                 health = maxHealth;
                 if (value <= 0)
                 {
-                    //use coroutine to display death animation then decrease lives
+                    //use coroutine to display death animation
                     Lives--;
                 }
             }
@@ -101,7 +101,7 @@ public class SceneLoader : MonoBehaviour
             instance.ScreenChange?.Invoke(instance.ScreenChange, health);
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.F1))
         {
             Health--;
         }

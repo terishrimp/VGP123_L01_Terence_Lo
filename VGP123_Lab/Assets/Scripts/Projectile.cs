@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(Collider2D))]
 public class Projectile : MonoBehaviour
 {
     [SerializeField] protected float projectileSpeed = 1f;
@@ -12,6 +10,11 @@ public class Projectile : MonoBehaviour
     [SerializeField] protected int damage = 1;
 
     protected Rigidbody2D rb;
+    public Rigidbody2D Rb
+    {
+        get { return rb; }
+    }
+
     private bool movingRight = false;
     protected Vector3 ogScale;
     // Start is called before the first frame update
@@ -55,7 +58,7 @@ public class Projectile : MonoBehaviour
     }
 
 
-    public int GetDamage()
+    public virtual int GetDamage()
     {
         return damage;
     }

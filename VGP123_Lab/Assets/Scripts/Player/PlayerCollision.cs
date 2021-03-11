@@ -40,18 +40,6 @@ public class PlayerCollision : MonoBehaviour
         SceneLoader.instance.HealthChange += OnHealthChange;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("enemyProjectile"))
-        {
-            var cEnemyProjectile = collision.GetComponent<EnemyProjectile>();
-            if (!isHit)
-            {
-                SceneLoader.instance.Health -= cEnemyProjectile.GetDamage();
-            }
-        }
-    }
-
     void OnHealthChange(object sender, int healthAmount)
     {
         rb.velocity = Vector2.zero;
