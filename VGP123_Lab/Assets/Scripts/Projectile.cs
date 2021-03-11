@@ -6,24 +6,26 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] float projectileSpeed = 1f;
-    [SerializeField] float lifeTime = 3f;
+    [SerializeField] protected float projectileSpeed = 1f;
+    [SerializeField] protected float lifeTime = 3f;
     [SerializeField] protected LayerMask layerMasksToIgnore;
     [SerializeField] protected int damage = 1;
 
-    private Rigidbody2D rb;
+    protected Rigidbody2D rb;
     private bool movingRight = false;
-    Vector3 ogScale;
+    protected Vector3 ogScale;
     // Start is called before the first frame update
-    void Awake()
+    protected virtual void Awake()
     {
         ogScale = transform.localScale;
         rb = GetComponent<Rigidbody2D>();
         Destroy(gameObject, lifeTime);
     }
 
+    protected virtual void Start() { }
+
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         if (movingRight)
         {

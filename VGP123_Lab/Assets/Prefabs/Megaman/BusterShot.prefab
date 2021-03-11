@@ -139,4 +139,5 @@ MonoBehaviour:
   lifeTime: 3
   layerMasksToIgnore:
     serializedVersion: 2
-    m_Bits: 580
+    m_Bits: 836
+  damage: 1

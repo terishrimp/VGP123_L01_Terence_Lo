@@ -46,13 +46,13 @@ TextureImporter:
     second: MegamanSprites_edited_13
   - first:
       213: 2427061374970055764
-    second: MegamanSprites_edited_14
+    second: MegamanHit_04
   - first:
       213: -8873338578718156536
-    second: MegamanSprites_edited_15
+    second: MegamanHit_06
   - first:
       213: 846890916739181118
-    second: MegamanSprites_edited_16
+    second: MegamanHit_08
   - first:
       213: 1424946462300849382
     second: MegamanSprites_edited_17
@@ -97,25 +97,25 @@ TextureImporter:
     second: MegamanSprites_edited_30
   - first:
       213: 3976866769866905469
-    second: MegamanSprites_edited_31
+    second: MegamanHit_01
   - first:
       213: -8616948544789760255
-    second: MegamanSprites_edited_32
+    second: MegamanHit_02
   - first:
       213: 3034216323532459924
-    second: MegamanSprites_edited_33
+    second: MegamanHit_03
   - first:
       213: -671048427377947950
-    second: MegamanSprites_edited_34
+    second: MegamanHit_05
   - first:
       213: 1867571475770601826
-    second: MegamanSprites_edited_35
+    second: MegamanHit_07
   - first:
       213: -6497001730824140249
-    second: MegamanSprites_edited_36
+    second: MegamanHit_09
   - first:
       213: 3966335354079296205
-    second: MegamanSprites_edited_37
+    second: MegamanHit_10
   - first:
       213: -8300917586435367276
     second: MegamanSprites_edited_38
@@ -508,7 +508,7 @@ TextureImporter:
     second: MegamanWallJump_01
   - first:
       213: -561566767828865180
-    second: MegamanSprites_edited_168
+    second: MegamanWallJump_02
   - first:
       213: 5783450312438267276
     second: MegamanWallSlideCharge_01
@@ -11068,7 +11068,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MegamanSprites_edited_14
+      name: MegamanHit_04
       rect:
         serializedVersion: 2
         x: 581
@@ -11089,7 +11089,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MegamanSprites_edited_15
+      name: MegamanHit_06
       rect:
         serializedVersion: 2
         x: 657
@@ -11110,7 +11110,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MegamanSprites_edited_16
+      name: MegamanHit_08
       rect:
         serializedVersion: 2
         x: 730
@@ -11299,7 +11299,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MegamanSprites_edited_31
+      name: MegamanHit_01
       rect:
         serializedVersion: 2
         x: 478
@@ -11320,7 +11320,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MegamanSprites_edited_32
+      name: MegamanHit_02
       rect:
         serializedVersion: 2
         x: 509
@@ -11341,7 +11341,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MegamanSprites_edited_33
+      name: MegamanHit_03
       rect:
         serializedVersion: 2
         x: 544
@@ -11362,7 +11362,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MegamanSprites_edited_34
+      name: MegamanHit_05
       rect:
         serializedVersion: 2
         x: 620
@@ -11383,7 +11383,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MegamanSprites_edited_35
+      name: MegamanHit_07
       rect:
         serializedVersion: 2
         x: 695
@@ -11404,7 +11404,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MegamanSprites_edited_36
+      name: MegamanHit_09
       rect:
         serializedVersion: 2
         x: 767
@@ -11425,7 +11425,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MegamanSprites_edited_37
+      name: MegamanHit_10
       rect:
         serializedVersion: 2
         x: 806
@@ -13987,7 +13987,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MegamanSprites_edited_168
+      name: MegamanWallJump_02
       rect:
         serializedVersion: 2
         x: 128
@@ -14032,7 +14032,7 @@ TextureImporter:
       name: MegamanSprites_edited_170
       rect:
         serializedVersion: 2
-        x: 241
+        x: 242
         y: 3056
         width: 32
         height: 42

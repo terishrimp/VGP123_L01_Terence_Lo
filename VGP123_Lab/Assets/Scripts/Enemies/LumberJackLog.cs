@@ -4,14 +4,11 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Collider2D))]
-public class LumberJackLog : MonoBehaviour
+public class LumberJackLog : EnemyProjectile
 {
 
-    [SerializeField] float shotSpeed = 400f;
-    [SerializeField] float lifetime = 4f;
     bool canBeShot = false;
     bool isShot = false;
-    Rigidbody2D rb;
     Vector3 ogPos;
     public bool CanBeShot
     {
@@ -31,7 +28,7 @@ public class LumberJackLog : MonoBehaviour
             isShot = value;
             if (isShot)
             {
-                Destroy(gameObject, lifetime);
+                Destroy(gameObject, lifeTime);
             }
         }
     }
@@ -43,28 +40,36 @@ public class LumberJackLog : MonoBehaviour
     {
         get { return ogPos; }
     }
-    private void Awake()
+    protected override void Awake()
     {
-        if (shotSpeed < 0)
+        ogScale = transform.localScale;
+        rb = GetComponent<Rigidbody2D>();
+
+        if (projectileSpeed < 0)
         {
-            shotSpeed *= -1;
+            projectileSpeed *= -1;
         }
         ogPos = transform.position;
         rb = GetComponent<Rigidbody2D>();
         rb.isKinematic = true;
     }
 
+    protected override void Start()
+    {
+        base.Start();
+    }
+
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
         if (isShot)
         {
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
             rb.isKinematic = true;
-            rb.velocity = new Vector2(-shotSpeed * Time.deltaTime, 0);
+            rb.velocity = new Vector2(-projectileSpeed * Time.deltaTime, 0);
         }
 
-        if(rb.isKinematic == false)
+        if (rb.isKinematic == false)
         {
             rb.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
         }

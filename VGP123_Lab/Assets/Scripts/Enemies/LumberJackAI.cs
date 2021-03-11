@@ -20,7 +20,6 @@ public class LumberJackAI : MonoBehaviour
         {
             if (value == isPlayerInRange) return;
             isPlayerInRange = value;
-            Debug.Log(value);
         }
     }
     // Start is called before the first frame update

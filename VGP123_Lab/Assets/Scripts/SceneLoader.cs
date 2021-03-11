@@ -32,6 +32,7 @@ public class SceneLoader : MonoBehaviour
                 health = maxHealth;
                 if (value <= 0)
                 {
+                    //use coroutine to display death animation then decrease lives
                     Lives--;
                 }
             }

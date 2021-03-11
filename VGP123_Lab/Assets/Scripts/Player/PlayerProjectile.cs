@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class PlayerProjectile : Projectile
 {
-    private void Start()
+    protected override void Start()
     {
         gameObject.tag = "playerProjectile";
     }

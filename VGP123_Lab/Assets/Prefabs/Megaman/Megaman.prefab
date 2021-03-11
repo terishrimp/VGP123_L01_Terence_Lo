@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 8612842567791216568}
   - component: {fileID: 8612842567791216567}
   - component: {fileID: 8612842567791216570}
-  - component: {fileID: 8612842567791216566}
   - component: {fileID: 8612842567791216565}
   - component: {fileID: 1225291411}
   m_Layer: 9
@@ -145,7 +144,7 @@ Animator:
   m_GameObject: {fileID: 8612842567791216572}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 666c7cc246dfb04489f185c950a596dc, type: 2}
+  m_Controller: {fileID: 9100000, guid: 57e44b24d2fec55409b91925a6956d03, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -154,57 +153,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!212 &8612842567791216566
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8612842567791216572}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1.5416666}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!114 &8612842567791216565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,6 +188,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80acc0d3dee122a488284a393ae7128b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitForce: {x: -5, y: 5}
+  iFramePeriod: 1
+  movementDisablePeriod: 0.5
+  flickerPeriod: 0.05
 --- !u!1 &8612842568326819644
 GameObject:
   m_ObjectHideFlags: 0

@@ -98,8 +98,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77470b2bc8066664db6e120b3024c52d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotSpeed: 300
-  lifetime: 4
+  projectileSpeed: 300
+  lifeTime: 4
+  layerMasksToIgnore:
+    serializedVersion: 2
+    m_Bits: 1476
+  damage: 1
 --- !u!50 &8719608200602322167
 Rigidbody2D:
   serializedVersion: 4

@@ -140,7 +140,8 @@ MonoBehaviour:
   lifeTime: 3
   layerMasksToIgnore:
     serializedVersion: 2
-    m_Bits: 644
+    m_Bits: 900
+  damage: 1
 --- !u!95 &4665522712143467592
 Animator:
   serializedVersion: 3
