@@ -80,7 +80,7 @@ public class LumberJackLog : EnemyProjectile
                 var player = collision.GetComponent<PlayerCollision>();
                 if (!player.IsHit && IsShot)
                 {
-                    SceneLoader.instance.Health -= damage;
+                    GameManager.instance.Health -= damage;
                     Destroy(gameObject);
                 }
             }

@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class DeathTrigger : MonoBehaviour
 {
-    SceneLoader sceneLoader;
+    GameManager sceneLoader;
 
     private void Start()
     {
-        if (FindObjectOfType<SceneLoader>() != null)
+        if (FindObjectOfType<GameManager>() != null)
         {
-            sceneLoader = FindObjectOfType<SceneLoader>();
+            sceneLoader = FindObjectOfType<GameManager>();
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (sceneLoader != null && collision.CompareTag("Player"))
         {
-            SceneLoader.instance.ResetCurrentScene();
+            GameManager.instance.ResetCurrentScene();
         }
     }
 }

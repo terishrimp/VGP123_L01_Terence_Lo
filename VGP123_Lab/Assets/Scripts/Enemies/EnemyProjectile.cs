@@ -22,7 +22,7 @@ public class EnemyProjectile : Projectile
             {
                 var player = collision.GetComponent<PlayerCollision>();
                 if (!player.IsHit) {
-                    SceneLoader.instance.Health -= damage;
+                    GameManager.instance.Health -= damage;
                     Destroy(gameObject); 
                 }
             }

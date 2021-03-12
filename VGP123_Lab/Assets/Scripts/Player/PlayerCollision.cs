@@ -37,7 +37,7 @@ public class PlayerCollision : MonoBehaviour
         if (movementDisablePeriod > iFramePeriod) movementDisablePeriod = iFramePeriod;
 
         anim = GetComponent<Animator>();
-        SceneLoader.instance.HealthChange += OnHealthChange;
+        GameManager.instance.HealthChange += OnHealthChange;
     }
 
     void OnHealthChange(object sender, int healthAmount)
@@ -62,7 +62,7 @@ public class PlayerCollision : MonoBehaviour
         if (playerMovement != null) movementDisableCoroutine = StartCoroutine(DisableMovement());
 
 
-        yield return new WaitForSeconds(iFramePeriod);
+        yield return new WaitForSecondsRealtime(iFramePeriod);
 
 
         //stop flicker
@@ -76,7 +76,7 @@ public class PlayerCollision : MonoBehaviour
     {
         anim.SetBool(animHitString, true);
         playerMovement.MovementEnabled = false;
-        yield return new WaitForSeconds(movementDisablePeriod);
+        yield return new WaitForSecondsRealtime(movementDisablePeriod);
         playerMovement.MovementEnabled = true;
         anim.SetBool(animHitString, false);
     }

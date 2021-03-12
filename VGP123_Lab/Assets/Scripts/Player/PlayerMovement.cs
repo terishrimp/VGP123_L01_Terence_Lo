@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
     Animator anim;
     float jumpTimer;
     float wallJumpTimer;
-    bool movementEnabled = true;
+    public bool movementEnabled = true;
     public bool MovementEnabled
     {
         get { return movementEnabled; }
@@ -74,88 +74,91 @@ public class PlayerMovement : MonoBehaviour
         ogScale = transform.localScale;
         ogMoveSpeed = moveSpeed;
         jumpTimer = 0f;
+        GameManager.instance.PauseChange += OnPauseChange;
     }
 
     // Update is called once per frame
     void Update()
     {
+
         float hAxis = Input.GetAxisRaw("Horizontal");
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, GroundLayer);
         IsOnWall = Physics2D.OverlapBox(wallCheck.position, new Vector2(wallCheckWidth, wallCheckLength), 0, GroundLayer);
-
-        if (IsOnWall)
+        if (movementEnabled)
         {
-            if (!isGrounded)
+            if (IsOnWall)
             {
-                //clamp fall speed
-                if (rb.velocity.y < fallSpeedMax)
+                if (!isGrounded)
                 {
-                    rb.velocity = new Vector2(rb.velocity.x, fallSpeedMax);
+                    //clamp fall speed
+                    if (rb.velocity.y < fallSpeedMax)
+                    {
+                        rb.velocity = new Vector2(rb.velocity.x, fallSpeedMax);
+                    }
+
+
+                    if (Input.GetButtonDown("Jump"))
+                    {
+
+                        wallJumped = true;
+                        HelperFunctions.AnimTrigger(anim, animJustJumpedString);
+                        rb.velocity = new Vector2(0, 0);
+                        rb.AddForce(new Vector2(jumpForce / 3 * transform.localScale.x * -1, jumpForce / 2), ForceMode2D.Impulse);
+
+                    }
                 }
-
-
-                if (Input.GetButtonDown("Jump") && movementEnabled)
+                else if (isGrounded)
                 {
-
-                    wallJumped = true;
-                    HelperFunctions.AnimTrigger(anim, animJustJumpedString);
-                    rb.velocity = new Vector2(0, 0);
-                    rb.AddForce(new Vector2(jumpForce / 3 * transform.localScale.x * -1, jumpForce / 2), ForceMode2D.Impulse);
-
+                    if (Input.GetButtonDown("Jump"))
+                    {
+                        HelperFunctions.AnimTrigger(anim, animJustJumpedString);
+                        rb.velocity = new Vector2(rb.velocity.x, 0);
+                        rb.AddForce(new Vector3(0, jumpForce / 3), ForceMode2D.Impulse);
+                    }
                 }
             }
-            else if (isGrounded)
+            else if (!IsOnWall)
             {
-                if (Input.GetButtonDown("Jump") && movementEnabled)
+                if (isGrounded)
                 {
-                    HelperFunctions.AnimTrigger(anim, animJustJumpedString);
-                    rb.velocity = new Vector2(rb.velocity.x, 0);
-                    rb.AddForce(new Vector3(0, jumpForce / 3), ForceMode2D.Impulse);
+                    if (Input.GetButtonDown("Jump"))
+                    {
+                        HelperFunctions.AnimTrigger(anim, animJustJumpedString);
+                        rb.velocity = new Vector2(rb.velocity.x, 0);
+                        rb.AddForce(new Vector3(0, jumpForce / 3), ForceMode2D.Impulse);
+                    }
+                }
+                else if (!isGrounded)
+                {
+                    isJumping = true;
                 }
             }
-        }
-        else if (!IsOnWall)
-        {
+
+
+            if (isGrounded || IsOnWall)
+            {
+                isJumping = false;
+                jumpTimer = 0f;
+                wallJumpTimer = 0f;
+            }
+
             if (isGrounded)
             {
-                if (Input.GetButtonDown("Jump") && movementEnabled)
-                {
-                    HelperFunctions.AnimTrigger(anim, animJustJumpedString);
-                    rb.velocity = new Vector2(rb.velocity.x, 0);
-                    rb.AddForce(new Vector3(0, jumpForce / 3), ForceMode2D.Impulse);
-                }
+                wallJumped = false;
             }
-            else if (!isGrounded)
-            {
-                isJumping = true;
-            }
-        }
-
-
-        if (isGrounded || IsOnWall)
-        {
-            isJumping = false;
-            jumpTimer = 0f;
-            wallJumpTimer = 0f;
-        }
-
-        if (isGrounded)
-        {
-            wallJumped = false;
-        }
 
 
 
 
-        CheckJump();
-        CheckHorizontalAxis(hAxis);
+            CheckJump();
+            CheckHorizontalAxis(hAxis);
 
-        if (movementEnabled) { 
-        anim.SetBool(animOnWallString, IsOnWall);
-        anim.SetBool(animJumpingString, isJumping);
-        anim.SetBool(animGroundedString, isGrounded);
-        anim.SetBool(animWalkingString, isWalking);
-        anim.SetFloat(animYVelocityString, rb.velocity.y);
+
+            anim.SetBool(animOnWallString, IsOnWall);
+            anim.SetBool(animJumpingString, isJumping);
+            anim.SetBool(animGroundedString, isGrounded);
+            anim.SetBool(animWalkingString, isWalking);
+            anim.SetFloat(animYVelocityString, rb.velocity.y);
         }
 
     }
@@ -236,5 +239,19 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.DrawCube(wallCheck.position, new Vector3(wallCheckWidth, wallCheckLength, wallCheckWidth));
 
         Gizmos.DrawSphere(groundCheck.position, groundCheckRadius);
+    }
+
+    private void OnPauseChange(object sender, bool isPaused)
+    {
+        if (isPaused)
+        {
+            movementEnabled = false;
+        }
+        else movementEnabled = true;
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.instance.PauseChange -= OnPauseChange;
     }
 }
