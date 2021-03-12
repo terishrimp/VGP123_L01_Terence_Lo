@@ -16,7 +16,7 @@ public class TitleCanvas : BaseCanvas
             quitButton.onClick.AddListener(() => GameManager.instance.QuitGame());
 
         if (settingsButton)
-            settingsButton.onClick.AddListener(() => myCanvasManager.ShowSettings());
+            settingsButton.onClick.AddListener(() => myCanvasManager.ShowSingleCanvas(myCanvasManager.SettingsCanvas.gameObject));
     }
 }
 

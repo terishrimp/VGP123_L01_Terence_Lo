@@ -13,10 +13,14 @@ public class PauseCanvas : BaseCanvas
             returnButton.onClick.AddListener(() => GameManager.instance.IsPaused = false);
 
         if (settingsButton)
-            settingsButton.onClick.AddListener(() => myCanvasManager.ShowSettings());
+            settingsButton.onClick.AddListener(() => myCanvasManager.ShowSingleCanvas(myCanvasManager.SettingsCanvas.gameObject));
 
         if (mainMenuButton)
-            mainMenuButton.onClick.AddListener(() => GameManager.instance.LoadTitle());
+            mainMenuButton.onClick.AddListener(() =>
+            {
+                GameManager.instance.IsPaused = false;
+                GameManager.instance.LoadTitle();
+            });
 
 
     }

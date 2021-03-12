@@ -169,7 +169,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: TitleCanvas
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 1793470257053357737, guid: d158b17362a974f4c81a181a59b43db0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6261862971086899516, guid: d158b17362a974f4c81a181a59b43db0,
+        type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6261862971752169771, guid: d158b17362a974f4c81a181a59b43db0,
+        type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6261862972734124053, guid: d158b17362a974f4c81a181a59b43db0,
+        type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6261862972734124052, guid: d158b17362a974f4c81a181a59b43db0, type: 3}
+    - {fileID: 6261862971752169770, guid: d158b17362a974f4c81a181a59b43db0, type: 3}
+    - {fileID: 6261862971086899515, guid: d158b17362a974f4c81a181a59b43db0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d158b17362a974f4c81a181a59b43db0, type: 3}
 --- !u!224 &907050504513284902 stripped
 RectTransform:
@@ -311,7 +334,24 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseCanvas
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8309214921829433051, guid: 448cafbce9791b946ae571de6b58a7c4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8309214922151966711, guid: 448cafbce9791b946ae571de6b58a7c4,
+        type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8309214923918713694, guid: 448cafbce9791b946ae571de6b58a7c4,
+        type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8309214923918713688, guid: 448cafbce9791b946ae571de6b58a7c4, type: 3}
+    - {fileID: 8309214922151966705, guid: 448cafbce9791b946ae571de6b58a7c4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 448cafbce9791b946ae571de6b58a7c4, type: 3}
 --- !u!224 &4797258432875271494 stripped
 RectTransform:
@@ -590,17 +630,28 @@ PrefabInstance:
       propertyPath: m_Name
       value: SettingsCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 1584334939619480839, guid: 5b05c6e4c63dcc34eb1d60e9b7ca8030,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1584334939655172996, guid: 5b05c6e4c63dcc34eb1d60e9b7ca8030,
+        type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1584334940373001396, guid: 5b05c6e4c63dcc34eb1d60e9b7ca8030,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1584334940436782664, guid: 5b05c6e4c63dcc34eb1d60e9b7ca8030,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1584334939655172999, guid: 5b05c6e4c63dcc34eb1d60e9b7ca8030, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5b05c6e4c63dcc34eb1d60e9b7ca8030, type: 3}
 --- !u!224 &4797258432623479551 stripped
 RectTransform:

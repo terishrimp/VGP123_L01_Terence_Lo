@@ -80,10 +80,10 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         float hAxis = Input.GetAxisRaw("Horizontal");
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, GroundLayer);
         IsOnWall = Physics2D.OverlapBox(wallCheck.position, new Vector2(wallCheckWidth, wallCheckLength), 0, GroundLayer);
+
         if (movementEnabled)
         {
             if (IsOnWall)
@@ -91,20 +91,14 @@ public class PlayerMovement : MonoBehaviour
                 if (!isGrounded)
                 {
                     //clamp fall speed
-                    if (rb.velocity.y < fallSpeedMax)
-                    {
-                        rb.velocity = new Vector2(rb.velocity.x, fallSpeedMax);
-                    }
-
+                    if (rb.velocity.y < fallSpeedMax) rb.velocity = new Vector2(rb.velocity.x, fallSpeedMax);
 
                     if (Input.GetButtonDown("Jump"))
                     {
-
                         wallJumped = true;
                         HelperFunctions.AnimTrigger(anim, animJustJumpedString);
                         rb.velocity = new Vector2(0, 0);
                         rb.AddForce(new Vector2(jumpForce / 3 * transform.localScale.x * -1, jumpForce / 2), ForceMode2D.Impulse);
-
                     }
                 }
                 else if (isGrounded)
@@ -147,12 +141,8 @@ public class PlayerMovement : MonoBehaviour
                 wallJumped = false;
             }
 
-
-
-
             CheckJump();
             CheckHorizontalAxis(hAxis);
-
 
             anim.SetBool(animOnWallString, IsOnWall);
             anim.SetBool(animJumpingString, isJumping);

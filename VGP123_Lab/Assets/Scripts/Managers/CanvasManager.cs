@@ -6,82 +6,70 @@ public class CanvasManager : MonoBehaviour
 {
 
     [SerializeField] TitleCanvas titleCanvas;
+    public TitleCanvas TitleCanvas
+    {
+        get { return titleCanvas; }
+    }
+
     [SerializeField] PauseCanvas pauseCanvas;
+    public PauseCanvas PauseCanvas
+    {
+        get { return pauseCanvas; }
+    }
+
     [SerializeField] SettingsCanvas settingsCanvas;
-    [SerializeField] UserInterface userInterfaceCanvas;
+    public SettingsCanvas SettingsCanvas
+    {
+        get { return settingsCanvas; }
+    }
+
+    [SerializeField] UserInterfaceCanvas userInterfaceCanvas;
+    public UserInterfaceCanvas UserInterfaceCanvas
+    {
+        get { return UserInterfaceCanvas; }
+    }
     [SerializeField] bool isInLevel = false;
 
-    // Start is called before the first frame update
     void Start()
     {
-        if(!pauseCanvas.MyCanvasManager)
-        pauseCanvas.MyCanvasManager = this;
-        if(!settingsCanvas.MyCanvasManager)
-        settingsCanvas.MyCanvasManager = this;
-        if(!titleCanvas.MyCanvasManager)
-        titleCanvas.MyCanvasManager = this;
-        if (!isInLevel)
-        {
-            ShowTitle();
-        }
-        else
-        {
-            ShowUserInterface();
-        }
-        
+        if (!pauseCanvas.MyCanvasManager)
+            pauseCanvas.MyCanvasManager = this;
+
+        if (!settingsCanvas.MyCanvasManager)
+            settingsCanvas.MyCanvasManager = this;
+
+        if (!titleCanvas.MyCanvasManager)
+            titleCanvas.MyCanvasManager = this;
+
+        if (!isInLevel) ShowSingleCanvas(titleCanvas.gameObject);
+        else ShowSingleCanvas(userInterfaceCanvas.gameObject);
+
         GameManager.instance.PauseChange += OnPauseChange;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
     void OnPauseChange(object sender, bool isPaused)
     {
-        if (isPaused)
-        {
-            ShowPause();
-        }
-        else
-        {
-            ShowUserInterface();
-        }
+        if (isPaused) ShowSingleCanvas(pauseCanvas.gameObject);
+        else ShowSingleCanvas(userInterfaceCanvas.gameObject);
     }
-    void SetListActive (GameObject[] canvasList, bool isActive)
+    void SetListActive(GameObject[] canvasList, bool isActive)
     {
-        foreach(GameObject go in canvasList)
-        {
-            go.SetActive(isActive);
-        }
+        foreach (GameObject go in canvasList) go.SetActive(isActive);
     }
 
-    public void ShowTitle()
+    public void ShowSingleCanvas(GameObject go)
     {
-        DisableAll();
-        titleCanvas.gameObject.SetActive(true);
+        DisableAllCanvas();
+        go.SetActive(true);
     }
-    public void ShowSettings()
+    public void DisableAllCanvas()
     {
-        DisableAll();
-        settingsCanvas.gameObject.SetActive(true);
-    }
-
-    public void ShowPause()
-    {
-        DisableAll();
-        pauseCanvas.gameObject.SetActive(true);
-    }
-
-    public void ShowUserInterface()
-    {
-        DisableAll();
-        userInterfaceCanvas.gameObject.SetActive(true);
-    }
-    public void DisableAll()
-    {
-        SetListActive(new GameObject[4] { titleCanvas.gameObject, pauseCanvas.gameObject, settingsCanvas.gameObject, userInterfaceCanvas.gameObject}
-, false);
+        SetListActive(new GameObject[4] {
+            titleCanvas.gameObject, 
+            pauseCanvas.gameObject, 
+            settingsCanvas.gameObject, 
+            userInterfaceCanvas.gameObject
+        }, 
+            false);
     }
 
     private void OnDestroy()

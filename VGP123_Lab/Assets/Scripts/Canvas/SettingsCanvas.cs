@@ -15,12 +15,15 @@ public class SettingsCanvas : BaseCanvas
     private void Start()
     {
         if (exitButton)
-            exitButton.onClick.AddListener(() => myCanvasManager.ShowTitle());
+            exitButton.onClick.AddListener(() => myCanvasManager.ShowSingleCanvas(myCanvasManager.TitleCanvas.gameObject));
+
         if (volSlider)
             volSlider.normalizedValue = GameManager.instance.GlobalVolume;
-        if (volToggle)
+
+        if (volToggle) { 
             volToggle.isOn = GameManager.instance.IsMuted;
             volToggle.onValueChanged.AddListener((value) => GameManager.instance.IsMuted = value);
+        }
 
     }
 
@@ -28,6 +31,7 @@ public class SettingsCanvas : BaseCanvas
     {
         if (volSlider)
             GameManager.instance.GlobalVolume = volSlider.normalizedValue;
+
         if (volText)
             volText.text = Math.Round(volSlider.normalizedValue, 2).ToString();
 

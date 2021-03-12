@@ -4,11 +4,15 @@ using UnityEditor;
 using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
-    public delegate void EventHandler<TEventArgs>(object sender, TEventArgs e);
+    public delegate void EventHandler<T1>(object sender, T1 e);
+    public delegate void EventHandler<T1, T2>(object sender, T1 e, T2 e2);
+
     public event EventHandler<int> HealthChange;
-    public event EventHandler<int> ScreenChange;
+    public event EventHandler<int, int> ScreenChange;
     public event EventHandler<bool> PauseChange;
     public event EventHandler<float> VolumeChange;
+    public event EventHandler<int> LivesChange;
+
     [SerializeField] int minHealth = 16;
     public int MinHealth
     {
@@ -59,7 +63,7 @@ public class GameManager : MonoBehaviour
             {
                 lives = maxLives;
             }
-            else if (value < 0)
+            else if (value <= 0)
             {
                 lives = maxLives;
                 instance.NextScene();
@@ -74,7 +78,7 @@ public class GameManager : MonoBehaviour
                 lives = value;
             }
 
-
+            instance.LivesChange?.Invoke(instance, value);
         }
     }
 
@@ -134,40 +138,25 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             instance = this;
         }
-    }
-    private void Start()
-    {
         Health = MaxHealth;
         Application.targetFrameRate = 120;
     }
-
-
     private void Update()
     {
         if (lastScreenSize != new Vector2(Screen.width, Screen.height))
         {
             lastScreenSize = new Vector2(Screen.width, Screen.height);
-            instance.ScreenChange?.Invoke(this, health);
+            instance.ScreenChange?.Invoke(this, health, lives);
         }
 
         if (Input.GetKeyDown(KeyCode.F1))
-        {
             Health--;
-        }
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
+        else if (Input.GetKeyDown(KeyCode.Escape))
             NextScene();
-        }
         else if (Input.GetKeyDown(KeyCode.Tilde))
-        {
             QuitGame();
-        }
-        else if (Input.GetKeyDown(KeyCode.P))
-        {
-            if (FindObjectOfType<PlayerMovement>()) { 
+        else if (Input.GetKeyDown(KeyCode.P) && FindObjectOfType<PlayerMovement>())
             IsPaused = !IsPaused;
-            }
-        }
     }
     public void ResetCurrentScene()
     {
@@ -176,8 +165,10 @@ public class GameManager : MonoBehaviour
 
     public void NextScene()
     {
-        if (SceneManager.GetActiveScene().buildIndex == SceneManager.sceneCountInBuildSettings - 1) SceneManager.LoadScene(0);
-        else SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        if (SceneManager.GetActiveScene().buildIndex == SceneManager.sceneCountInBuildSettings - 1) 
+            SceneManager.LoadScene(0);
+        else 
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void LoadTitle()

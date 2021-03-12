@@ -45,10 +45,7 @@ public class PlayerCollision : MonoBehaviour
         rb.velocity = Vector2.zero;
         rb.AddForce(hitForce * new Vector2 (transform.localScale.x, 1), ForceMode2D.Impulse);
 
-        if (lastOnHit != null)
-        {
-            StopCoroutine(lastOnHit);
-        }
+        if (lastOnHit != null) StopCoroutine(lastOnHit);
         lastOnHit = StartCoroutine(OnHit());
     }
 
@@ -61,12 +58,11 @@ public class PlayerCollision : MonoBehaviour
         Coroutine movementDisableCoroutine = null;
         if (playerMovement != null) movementDisableCoroutine = StartCoroutine(DisableMovement());
 
-
         yield return new WaitForSecondsRealtime(iFramePeriod);
-
 
         //stop flicker
         StopCoroutine(flickerCoroutine);
+
         //reset color
         spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 1f);
         if (movementDisableCoroutine != null) StopCoroutine(movementDisableCoroutine);
@@ -76,7 +72,9 @@ public class PlayerCollision : MonoBehaviour
     {
         anim.SetBool(animHitString, true);
         playerMovement.MovementEnabled = false;
+
         yield return new WaitForSecondsRealtime(movementDisablePeriod);
+
         playerMovement.MovementEnabled = true;
         anim.SetBool(animHitString, false);
     }
@@ -86,11 +84,15 @@ public class PlayerCollision : MonoBehaviour
         {
             yield return new WaitForSecondsRealtime(flickerPeriod);
             if (spriteRenderer.color == new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 1f))
-            {
                 spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, .2f);
-            }
-            else spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 1f);
+            else 
+                spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 1f);
         }
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.instance.HealthChange -= OnHealthChange;
     }
 }
 
