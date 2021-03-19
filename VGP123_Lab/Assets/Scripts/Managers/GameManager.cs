@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.SceneManagement;
@@ -12,6 +13,7 @@ public class GameManager : MonoBehaviour
     public event EventHandler<bool> PauseChange;
     public event EventHandler<float> VolumeChange;
     public event EventHandler<int> LivesChange;
+    public event EventHandler<bool> MuteChange;
 
     [SerializeField] int minHealth = 16;
     public int MinHealth
@@ -32,12 +34,12 @@ public class GameManager : MonoBehaviour
         set
         {
             if (value == health) return;
+            instance.HealthChange?.Invoke(this, value);
             if (value <= 0 || value > maxHealth)
             {
                 health = maxHealth;
                 if (value <= 0)
                 {
-                    //use coroutine to display death animation
                     Lives--;
                 }
             }
@@ -45,7 +47,6 @@ public class GameManager : MonoBehaviour
             {
                 health = value;
             }
-            instance.HealthChange?.Invoke(this, value);
         }
     }
 
@@ -59,6 +60,7 @@ public class GameManager : MonoBehaviour
         {
             if (value == lives) return;
 
+            instance.LivesChange?.Invoke(instance, value);
             if (value > maxLives)
             {
                 lives = maxLives;
@@ -71,14 +73,13 @@ public class GameManager : MonoBehaviour
             else if (value < lives)
             {
                 lives = value;
-                instance.ResetCurrentScene();
+                instance.ResetCurrentScene(2f);
             }
             else
             {
                 lives = value;
             }
 
-            instance.LivesChange?.Invoke(instance, value);
         }
     }
 
@@ -90,6 +91,7 @@ public class GameManager : MonoBehaviour
         set
         {
             if (value == isPaused) return;
+            instance.PauseChange?.Invoke(instance, value);
             if (value)
             {
                 Time.timeScale = 0;
@@ -98,7 +100,6 @@ public class GameManager : MonoBehaviour
             {
                 Time.timeScale = 1f;
             }
-            instance.PauseChange?.Invoke(this, value);
             isPaused = value;
         }
     }
@@ -110,6 +111,7 @@ public class GameManager : MonoBehaviour
         set
         {
             if (value == isMuted) return;
+            instance.MuteChange?.Invoke(instance, value);
             Debug.Log(value);
             isMuted = value;
         }
@@ -122,12 +124,13 @@ public class GameManager : MonoBehaviour
         set
         {
             if (value == globalVolume) return;
+            VolumeChange?.Invoke(instance, value);
             if (value < 0) globalVolume = 0;
             else if (value > 1) globalVolume = 1;
             else globalVolume = value;
-            VolumeChange?.Invoke(instance, value);
         }
     }
+
     Vector2 lastScreenSize = new Vector2(0, 0);
     public static GameManager instance;
     private void Awake()
@@ -162,7 +165,16 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+    public void ResetCurrentScene(float delay)
+    {
+        StartCoroutine(DelayedLoad(delay));
+    }
 
+    IEnumerator DelayedLoad(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
     public void NextScene()
     {
         if (SceneManager.GetActiveScene().buildIndex == SceneManager.sceneCountInBuildSettings - 1) 

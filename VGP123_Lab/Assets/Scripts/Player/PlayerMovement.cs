@@ -7,6 +7,10 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class PlayerMovement : MonoBehaviour
 {
+
+    [SerializeField] AudioClip jumpClip;
+    [SerializeField] AudioClip landClip;
+
     [Header("Movement Properties")]
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] float jumpForce = 10f;
@@ -26,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
 
     Rigidbody2D rb;
     Vector3 ogScale;
+    AudioSource audioSource;
     float ogMoveSpeed;
     Animator anim;
     float jumpTimer;
@@ -33,14 +38,29 @@ public class PlayerMovement : MonoBehaviour
     public bool movementEnabled = true;
     public bool MovementEnabled
     {
-        get { return movementEnabled; }
+        get { 
+            return movementEnabled; }
         set
         {
+            Debug.Log("MovementEnabled set to: " + value);
             if (value == movementEnabled) return;
             movementEnabled = value;
         }
     }
     bool isGrounded = true;
+    public bool IsGrounded
+    {
+        get { return isGrounded;  }
+        set
+        {
+            if (value == isGrounded) return;
+            if (isGrounded)
+            {
+                audioSource.PlayOneShot(landClip, .75f * GameManager.instance.GlobalVolume);
+            }
+            isGrounded = value;
+        }
+    }
     bool isOnWall = false;
     public bool IsOnWall
     {
@@ -69,42 +89,47 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         ogScale = transform.localScale;
         ogMoveSpeed = moveSpeed;
         jumpTimer = 0f;
         GameManager.instance.PauseChange += OnPauseChange;
+        audioSource.mute = GameManager.instance.IsMuted;
+        audioSource.volume *= GameManager.instance.GlobalVolume;
     }
 
     // Update is called once per frame
     void Update()
     {
         float hAxis = Input.GetAxisRaw("Horizontal");
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, GroundLayer);
+        IsGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, GroundLayer);
         IsOnWall = Physics2D.OverlapBox(wallCheck.position, new Vector2(wallCheckWidth, wallCheckLength), 0, GroundLayer);
 
         if (movementEnabled)
         {
             if (IsOnWall)
             {
-                if (!isGrounded)
+                if (!IsGrounded)
                 {
                     //clamp fall speed
                     if (rb.velocity.y < fallSpeedMax) rb.velocity = new Vector2(rb.velocity.x, fallSpeedMax);
 
                     if (Input.GetButtonDown("Jump"))
                     {
+                        audioSource.PlayOneShot(jumpClip);
                         wallJumped = true;
                         HelperFunctions.AnimTrigger(anim, animJustJumpedString);
                         rb.velocity = new Vector2(0, 0);
                         rb.AddForce(new Vector2(jumpForce / 3 * transform.localScale.x * -1, jumpForce / 2), ForceMode2D.Impulse);
                     }
                 }
-                else if (isGrounded)
+                else if (IsGrounded)
                 {
                     if (Input.GetButtonDown("Jump"))
                     {
+                        audioSource.PlayOneShot(jumpClip);
                         HelperFunctions.AnimTrigger(anim, animJustJumpedString);
                         rb.velocity = new Vector2(rb.velocity.x, 0);
                         rb.AddForce(new Vector3(0, jumpForce / 3), ForceMode2D.Impulse);
@@ -113,30 +138,31 @@ public class PlayerMovement : MonoBehaviour
             }
             else if (!IsOnWall)
             {
-                if (isGrounded)
+                if (IsGrounded)
                 {
                     if (Input.GetButtonDown("Jump"))
                     {
+                        audioSource.PlayOneShot(jumpClip);
                         HelperFunctions.AnimTrigger(anim, animJustJumpedString);
                         rb.velocity = new Vector2(rb.velocity.x, 0);
                         rb.AddForce(new Vector3(0, jumpForce / 3), ForceMode2D.Impulse);
                     }
                 }
-                else if (!isGrounded)
+                else if (!IsGrounded)
                 {
                     isJumping = true;
                 }
             }
 
 
-            if (isGrounded || IsOnWall)
+            if (IsGrounded || IsOnWall)
             {
                 isJumping = false;
                 jumpTimer = 0f;
                 wallJumpTimer = 0f;
             }
 
-            if (isGrounded)
+            if (IsGrounded)
             {
                 wallJumped = false;
             }
@@ -146,7 +172,7 @@ public class PlayerMovement : MonoBehaviour
 
             anim.SetBool(animOnWallString, IsOnWall);
             anim.SetBool(animJumpingString, isJumping);
-            anim.SetBool(animGroundedString, isGrounded);
+            anim.SetBool(animGroundedString, IsGrounded);
             anim.SetBool(animWalkingString, isWalking);
             anim.SetFloat(animYVelocityString, rb.velocity.y);
         }
@@ -160,7 +186,7 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetButton("Jump"))
             {
 
-                if (!isGrounded && !wallJumped)
+                if (!IsGrounded && !wallJumped)
                 {
 
                     jumpTimer += Time.deltaTime;

@@ -127,8 +127,8 @@ GameObject:
   - component: {fileID: 1446163477592524171}
   - component: {fileID: 1446163477592524170}
   - component: {fileID: 1446163477592524173}
-  - component: {fileID: 794560625}
   - component: {fileID: 1370272730}
+  - component: {fileID: 3704593734564532551}
   m_Layer: 7
   m_Name: Bunny
   m_TagString: Untagged
@@ -242,6 +242,8 @@ MonoBehaviour:
   idlePeriod: 1
   canMoveCheckRadius: 8
   health: 3
+  deathExplosion: {fileID: 1081217719676290626, guid: 7b936c8900d08ce439072eaa34f5f519,
+    type: 3}
   groundRaycastOrigin: {fileID: 1446163477806588969}
   groundRaycastLength: 0.25
   groundLayerMask:
@@ -251,32 +253,9 @@ MonoBehaviour:
   playerRaycastLength: 5
   shotPrefab: {fileID: 6930964929383597151, guid: 59ee8cfb65afdf84f8f4a3040dd56bac,
     type: 3}
---- !u!61 &794560625
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1446163477592524172}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.124704}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.5663119, y: 0.19675827}
-  m_EdgeRadius: 0
+  deathClip: {fileID: 8300000, guid: e8000293bf4d02d4bb895bdf44eb31a2, type: 3}
+  shootClip: {fileID: 8300000, guid: 010f3fa8a01cfba448358c521a9970e8, type: 3}
+  hitClip: {fileID: 8300000, guid: a20b494db1ff93f48af5ffd722a937cf, type: 3}
 --- !u!61 &1370272730
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -303,6 +282,102 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5663119, y: 0.19675827}
   m_EdgeRadius: 0
+--- !u!82 &3704593734564532551
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1446163477592524172}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 0.75
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 33.419716
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1446163477806588968
 GameObject:
   m_ObjectHideFlags: 0

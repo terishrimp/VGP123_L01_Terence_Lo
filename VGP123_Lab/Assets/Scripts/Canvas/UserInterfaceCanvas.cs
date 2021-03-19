@@ -70,7 +70,7 @@ public class UserInterfaceCanvas : MonoBehaviour
     //not the best approach but necessary to obtain correct value for ppCam.pixelRatio
     IEnumerator LateStart()
     {
-        yield return new WaitForSecondsRealtime(0.0001f);
+        yield return new WaitForSecondsRealtime(0.0002f);
         UpdateUI(GameManager.instance.Health, GameManager.instance.Lives);
     }
 

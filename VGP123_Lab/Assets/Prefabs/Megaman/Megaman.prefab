@@ -120,6 +120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5dbc0c1a224a0d4a943ba9c9a5564f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpClip: {fileID: 8300000, guid: d1d75baceaec6bc45a47a218bd787b6a, type: 3}
+  landClip: {fileID: 8300000, guid: d4c7ae4ba8fd18c44bcc13ac4872a989, type: 3}
   moveSpeed: 450
   jumpForce: 30
   jumpPeriod: 0.25
@@ -133,6 +135,7 @@ MonoBehaviour:
   wallCheckLength: 0.92
   fallSpeedMax: -2
   wallJumpPeriod: 0.1
+  movementEnabled: 1
   wallJumped: 0
 --- !u!95 &8612842567791216570
 Animator:
@@ -176,6 +179,11 @@ MonoBehaviour:
   levelOneShotTimerPeriod: 1
   levelTwoShotTimerPeriod: 2
   shotCdPeriod: 0.125
+  busterShotClip: {fileID: 8300000, guid: 66511ca6673adb540916db9829b33989, type: 3}
+  levelOneShotClip: {fileID: 8300000, guid: db1282ff8df92cd4aa49be7a9f6b5545, type: 3}
+  levelTwoShotClip: {fileID: 8300000, guid: 423683ec46fdf0244962cb1740d8c697, type: 3}
+  initialChargeClip: {fileID: 8300000, guid: 21dc85ea603040b48876d8582aa9f963, type: 3}
+  chargeLoopClip: {fileID: 8300000, guid: 78d50e701253dbf40983b120b831f76d, type: 3}
 --- !u!114 &1225291411
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,10 +196,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80acc0d3dee122a488284a393ae7128b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathPSPrefab: {fileID: 0}
   hitForce: {x: -4, y: 5}
   iFramePeriod: 1
   movementDisablePeriod: 0.5
   flickerPeriod: 0.05
+  hitClip: {fileID: 8300000, guid: ab97ae1b38a05634ab5fb9f9ef5fe10c, type: 3}
+  deathClip: {fileID: 8300000, guid: 29e7474215a09f84e99f6987985d4786, type: 3}
 --- !u!1 &8612842568326819644
 GameObject:
   m_ObjectHideFlags: 0

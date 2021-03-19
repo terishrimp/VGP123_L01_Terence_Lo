@@ -26,13 +26,6 @@ public class LumberJackTree : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject enemyListGo = GameObject.FindGameObjectWithTag("enemyList");
-        if (enemyListGo == null)
-        {
-            enemyListGo = Instantiate(new GameObject("Enemy List"), new Vector3(0, 0, 0), Quaternion.identity);
-            enemyListGo.tag = "enemyList";
-        }
-        transform.parent = enemyListGo.transform;
 
         if (yShiftFromSpawn < 0) yShiftFromSpawn = 0;
         if (spawnPeriod < 0) spawnPeriod = 0;

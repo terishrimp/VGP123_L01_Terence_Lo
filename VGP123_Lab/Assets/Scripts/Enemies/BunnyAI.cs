@@ -4,7 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Rigidbody2D))]
-
+[RequireComponent(typeof(AudioSource))]
 public class BunnyAI : MonoBehaviour
 {
     [SerializeField] Collider2D upperBodyCollider = null;
@@ -12,7 +12,8 @@ public class BunnyAI : MonoBehaviour
     [SerializeField] float idlePeriod = 1f;
 
     [SerializeField] float canMoveCheckRadius = 4f;
-    public int health = 2;
+    [SerializeField] int health = 2;
+    [SerializeField] ParticleSystem deathExplosion;
 
     [Header("Ground Raycast")]
     [SerializeField] Transform groundRaycastOrigin = null;
@@ -25,11 +26,21 @@ public class BunnyAI : MonoBehaviour
 
     [Header("Projectile Properties")]
     [SerializeField] EnemyProjectile shotPrefab = null;
-    Animator anim;
+
+    [Header("Sound")]
+    [SerializeField] AudioClip deathClip;
+    [SerializeField] AudioClip shootClip;
+    [SerializeField] AudioClip hitClip;
+
+    AudioSource audioSource;
+    Animator animator;
     Rigidbody2D rb;
+    SpriteRenderer spriteRenderer;
+    BoxCollider2D groundCollider;
     bool canMove = false;
     bool isGrounded = true;
     bool isShooting = false;
+    bool isDead = false;
     float idleTimer;
     // Start is called before the first frame update
     void Start()
@@ -43,8 +54,13 @@ public class BunnyAI : MonoBehaviour
 
         transform.parent = enemyListGo.transform;
         idleTimer = idlePeriod;
+        groundCollider = GetComponent<BoxCollider2D>();
+        audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        audioSource.mute = GameManager.instance.IsMuted;
+        audioSource.volume *= GameManager.instance.GlobalVolume;
     }
 
     // Update is called once per frame
@@ -62,14 +78,14 @@ public class BunnyAI : MonoBehaviour
                 //jump
                 if (idleTimer > idlePeriod)
                 {
-                    anim.SetTrigger("jumped");
+                    animator.SetTrigger("jumped");
                     rb.velocity = new Vector2(0f, 0f);
                     rb.AddForce(jumpForce, ForceMode2D.Impulse);
                 }
             }
             else
             {
-                anim.ResetTrigger("jumped");
+                animator.ResetTrigger("jumped");
                 if (idleTimer > idlePeriod) idleTimer = 0;
                 if (isGrounded) isGrounded = false;
                 Debug.DrawLine(groundRaycastOrigin.position, groundRaycastOrigin.position + transform.up * -1 * groundRaycastLength, Color.red);
@@ -94,19 +110,29 @@ public class BunnyAI : MonoBehaviour
                 Debug.DrawLine(playerRaycastOrigin.position, playerRaycastOrigin.position + transform.right * -1 * playerRaycastLength, Color.red);
             }
 
-            anim.SetBool("isGrounded", isGrounded);
-            anim.SetBool("isShooting", isShooting);
-            anim.SetFloat("yVelocity", rb.velocity.y);
+            animator.SetBool("isGrounded", isGrounded);
+            animator.SetBool("isShooting", isShooting);
+            animator.SetFloat("yVelocity", rb.velocity.y);
         }
         else
         {
 
-            foreach(var collider in canMoveCheckColliderList)
+            foreach (var collider in canMoveCheckColliderList)
             {
                 if (collider.CompareTag("Player"))
                 {
                     canMove = true;
                 }
+            }
+        }
+        if (isDead)
+        {
+            spriteRenderer.sprite = null;
+            animator.enabled = false;
+            rb.simulated = false;
+            if (!audioSource.isPlaying)
+            {
+                Destroy(gameObject);
             }
         }
     }
@@ -115,6 +141,7 @@ public class BunnyAI : MonoBehaviour
     void Fire()
 #pragma warning restore IDE0051 // Remove unused private members
     {
+        audioSource.PlayOneShot(shootClip);
         var cProjectile = Instantiate(shotPrefab, playerRaycastOrigin.position, Quaternion.identity);
     }
 
@@ -125,10 +152,28 @@ public class BunnyAI : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<PlayerProjectile>() != null)
+        var playerProjectile = collision.GetComponent<PlayerProjectile>();
+        if (playerProjectile)
         {
-            var playerProjectile = collision.GetComponent<PlayerProjectile>();
             DecrementHealth(playerProjectile.GetDamage());
+        }
+
+        var playerCollision = collision.GetComponent<PlayerCollision>();
+        if (playerCollision)
+        {
+            if (!playerCollision.IsHit)
+            {
+                GameManager.instance.Health -= 1;
+            }
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        var logCollision = collision.gameObject.GetComponent<LumberJackLog>();
+        if (logCollision)
+        {
+            Physics2D.IgnoreCollision(groundCollider, collision.collider);
         }
     }
 
@@ -137,7 +182,15 @@ public class BunnyAI : MonoBehaviour
         health -= decrementValue;
         if (health <= 0)
         {
-            Destroy(gameObject);
+            isDead = true;
+            var cDeathExplosion = Instantiate(deathExplosion.gameObject, transform.position, Quaternion.identity);
+            Destroy(cDeathExplosion, deathExplosion.main.duration);
+            audioSource.PlayOneShot(deathClip, 0.75f * GameManager.instance.GlobalVolume);
+
+        }
+        else
+        {
+            audioSource.PlayOneShot(hitClip, 0.75f * GameManager.instance.GlobalVolume);
         }
     }
 }

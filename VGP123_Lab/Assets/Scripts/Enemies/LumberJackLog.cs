@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class LumberJackLog : EnemyProjectile
 {
+    [SerializeField] ParticleSystem deathExplosion;
+    [SerializeField] AudioClip deathClip;
     bool canBeShot = false;
     public bool CanBeShot
     {
@@ -37,6 +39,9 @@ public class LumberJackLog : EnemyProjectile
     {
         get { return ogPos; }
     }
+    bool isDead = false;
+    SpriteRenderer spriteRenderer;
+    AudioSource audioSource;
     protected override void Awake()
     {
         if (projectileSpeed < 0)
@@ -44,7 +49,8 @@ public class LumberJackLog : EnemyProjectile
             projectileSpeed *= -1;
         }
         ogPos = transform.position;
-
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
         rb.isKinematic = true;
     }
@@ -68,7 +74,15 @@ public class LumberJackLog : EnemyProjectile
         {
             rb.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
         }
-
+        if (isDead)
+        {
+            spriteRenderer.sprite = null;
+            rb.simulated = false;
+            if (!audioSource.isPlaying)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
@@ -81,9 +95,18 @@ public class LumberJackLog : EnemyProjectile
                 if (!player.IsHit && IsShot)
                 {
                     GameManager.instance.Health -= damage;
+
                     Destroy(gameObject);
                 }
             }
+        }
+        if (collision.GetComponent<PlayerProjectile>() != null && isShot)
+        {
+            var cDeathExplosion = Instantiate(deathExplosion.gameObject, transform.position, Quaternion.identity);
+            if (!GameManager.instance.IsMuted)
+                audioSource.PlayOneShot(deathClip, .75f * GameManager.instance.GlobalVolume);
+            Destroy(cDeathExplosion, deathExplosion.main.duration);
+            isDead = true;
         }
     }
 

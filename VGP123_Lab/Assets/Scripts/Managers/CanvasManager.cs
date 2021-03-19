@@ -32,13 +32,13 @@ public class CanvasManager : MonoBehaviour
 
     void Start()
     {
-        if (!pauseCanvas.MyCanvasManager)
+        if (pauseCanvas != null)
             pauseCanvas.MyCanvasManager = this;
 
-        if (!settingsCanvas.MyCanvasManager)
+        if (settingsCanvas != null)
             settingsCanvas.MyCanvasManager = this;
 
-        if (!titleCanvas.MyCanvasManager)
+        if (titleCanvas != null)
             titleCanvas.MyCanvasManager = this;
 
         if (!isInLevel) ShowSingleCanvas(titleCanvas.gameObject);
@@ -51,10 +51,6 @@ public class CanvasManager : MonoBehaviour
         if (isPaused) ShowSingleCanvas(pauseCanvas.gameObject);
         else ShowSingleCanvas(userInterfaceCanvas.gameObject);
     }
-    void SetListActive(GameObject[] canvasList, bool isActive)
-    {
-        foreach (GameObject go in canvasList) go.SetActive(isActive);
-    }
 
     public void ShowSingleCanvas(GameObject go)
     {
@@ -63,13 +59,14 @@ public class CanvasManager : MonoBehaviour
     }
     public void DisableAllCanvas()
     {
-        SetListActive(new GameObject[4] {
-            titleCanvas.gameObject, 
-            pauseCanvas.gameObject, 
-            settingsCanvas.gameObject, 
-            userInterfaceCanvas.gameObject
-        }, 
-            false);
+        GameObject[] canvasList = {titleCanvas.gameObject,
+            pauseCanvas.gameObject,
+            settingsCanvas.gameObject,
+            userInterfaceCanvas.gameObject };
+        foreach (var canvas in canvasList)
+        {
+            if (canvas != null) canvas.SetActive(false);
+        }
     }
 
     private void OnDestroy()

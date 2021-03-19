@@ -18,5 +18,10 @@ public class TitleCanvas : BaseCanvas
         if (settingsButton)
             settingsButton.onClick.AddListener(() => myCanvasManager.ShowSingleCanvas(myCanvasManager.SettingsCanvas.gameObject));
     }
+
+    public void LoadTitle()
+    {
+        GameManager.instance.LoadTitle();
+    }
 }
 
