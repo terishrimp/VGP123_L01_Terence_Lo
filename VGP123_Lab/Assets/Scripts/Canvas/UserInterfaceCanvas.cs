@@ -23,6 +23,10 @@ public class UserInterfaceCanvas : MonoBehaviour
 
     float lifeCounterOgFontSize;
     PixelPerfectCamera ppCam;
+    public PixelPerfectCamera PPCam
+    {
+        get { return ppCam; }
+    }
     float lifeBarOgHeight;
     Vector3 healthPointOgScale;
 

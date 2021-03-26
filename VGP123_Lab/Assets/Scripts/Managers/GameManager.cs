@@ -34,17 +34,18 @@ public class GameManager : MonoBehaviour
         set
         {
             if (value == health) return;
-            instance.HealthChange?.Invoke(this, value);
             if (value <= 0 || value > maxHealth)
             {
                 health = maxHealth;
                 if (value <= 0)
                 {
+                    instance.HealthChange?.Invoke(this, value);
                     Lives--;
                 }
             }
             else
             {
+                instance.HealthChange?.Invoke(this, value);
                 health = value;
             }
         }
@@ -177,9 +178,9 @@ public class GameManager : MonoBehaviour
     }
     public void NextScene()
     {
-        if (SceneManager.GetActiveScene().buildIndex == SceneManager.sceneCountInBuildSettings - 1) 
+        if (SceneManager.GetActiveScene().buildIndex == SceneManager.sceneCountInBuildSettings - 1)
             SceneManager.LoadScene(0);
-        else 
+        else
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 

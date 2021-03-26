@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class CanvasManager : MonoBehaviour
 {
 
@@ -41,10 +42,39 @@ public class CanvasManager : MonoBehaviour
         if (titleCanvas != null)
             titleCanvas.MyCanvasManager = this;
 
+        if (userInterfaceCanvas != null)
+        {
+            SceneManager.sceneLoaded += OnSceneLoaded;
+            if (isInLevel)
+            {
+                if (userInterfaceCanvas.PPCam != null)
+                {
+                    userInterfaceCanvas.PPCam.cropFrameX = false;
+                    userInterfaceCanvas.PPCam.cropFrameY = false;
+                    userInterfaceCanvas.PPCam.cropFrameX = true;
+                    userInterfaceCanvas.PPCam.cropFrameY = true;
+                }
+            }
+        }
+
         if (!isInLevel) ShowSingleCanvas(titleCanvas.gameObject);
         else ShowSingleCanvas(userInterfaceCanvas.gameObject);
 
         GameManager.instance.PauseChange += OnPauseChange;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (isInLevel)
+        {
+            if (userInterfaceCanvas.PPCam != null)
+            {
+                userInterfaceCanvas.PPCam.cropFrameX = false;
+                userInterfaceCanvas.PPCam.cropFrameY = false;
+                userInterfaceCanvas.PPCam.cropFrameX = true;
+                userInterfaceCanvas.PPCam.cropFrameY = true;
+            }
+        }
     }
     void OnPauseChange(object sender, bool isPaused)
     {
